@@ -2,3 +2,5 @@
 .idea/
 
 *.iml
+
+carWash-Core/src/test/java/modelo/VehiculoUnitTest.java
