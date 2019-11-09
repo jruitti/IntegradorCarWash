@@ -13,7 +13,7 @@ public class ClienteEntityMapper {
         clienteEntity.setDomicilio(clienteCore.getDomicilio());
         clienteEntity.setBarrio(clienteCore.getBarrio());
         clienteEntity.setDocumento(clienteCore.getDocumento());
-        //falta la coleccion de Auto
+        //clienteEntity.setVehiculos(new ); falta la coleccion vehiculo
         return clienteEntity;
     }
 
