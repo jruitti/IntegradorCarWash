@@ -25,6 +25,18 @@ public class Turno {
         }else return new Turno(idPedido,vehiculo,fecha,encargado,precio);
     }
 
+    public Integer getIdPedido() {
+        return idPedido;
+    }
+
+    public Empleado getEncargado() {
+        return encargado;
+    }
+
+    public float getPrecio() {
+        return precio;
+    }
+
     public Vehiculo getVehiculo() {
         return vehiculo;
     }
