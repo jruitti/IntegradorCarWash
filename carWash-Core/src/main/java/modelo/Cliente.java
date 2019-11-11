@@ -3,7 +3,8 @@ package modelo;
 import excepciones.ClienteIncompletoException;
 
 import java.util.ArrayList;
-import java.util.Collection;
+
+import java.util.List;
 
 public class Cliente {
     private Integer idCliente;
@@ -11,7 +12,7 @@ public class Cliente {
     private String domicilio;
     private String barrio;
     private String documento;
-    private Collection<Vehiculo> vehiculos;
+    private List<Vehiculo> vehiculos;
 
     private Cliente(Integer idCliente,String nombre,String domicilio,String barrio,String documento){
         this.idCliente=idCliente;
@@ -45,7 +46,7 @@ public class Cliente {
         return barrio;
     }
 
-    public Collection<Vehiculo> getVehiculos() {
+    public List<Vehiculo> getVehiculos() {
         return vehiculos;
     }
 
