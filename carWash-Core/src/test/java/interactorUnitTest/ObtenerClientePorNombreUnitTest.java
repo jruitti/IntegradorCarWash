@@ -31,7 +31,7 @@ public class ObtenerClientePorNombreUnitTest {
         losClientes.add(bautistaPeña);
         losClientes.add(bautistaPerez);
         losClientes.add(bautistaBarboza);
-        
+
         when(buscarClientePorNombreRepo.buscarClientePorNombre("Bautista")).thenReturn(losClientes);
         BuscarClientesPorNombreUseCase buscarClientePorNombreUseCase = new BuscarClientesPorNombreUseCase(buscarClientePorNombreRepo);
         List<Cliente> result=buscarClientePorNombreUseCase.buscarClientePorNombre("Bautista");
