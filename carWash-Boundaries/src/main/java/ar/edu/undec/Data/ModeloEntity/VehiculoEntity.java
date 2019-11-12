@@ -9,14 +9,14 @@ public class VehiculoEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_vehiculo")
-    private int idVehiculo;
+    private Integer idVehiculo;
     private String matricula;
     private String marca;
     private String modelo;
 
     public VehiculoEntity(){}
 
-    public int getIdVehiculo() {
+    public Integer getIdVehiculo() {
         return idVehiculo;
     }
 
