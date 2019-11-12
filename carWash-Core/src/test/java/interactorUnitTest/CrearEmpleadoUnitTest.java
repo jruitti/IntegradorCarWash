@@ -36,7 +36,7 @@ public class CrearEmpleadoUnitTest {
         when(crearEmpleadoRepo.findByLegajo(12345678)).thenReturn(Empleado.factoryEmpleado(1, "Pedro", 12345678));
         CrearEmpleadoUseCase crearEmpleadoUseCase = new CrearEmpleadoUseCase(crearEmpleadoRepo);
         Assertions.assertThrows(EmpleadoExisteException.class, () -> crearEmpleadoUseCase.crearEmpleado(empleadoNuevo));
-        
+
     }
 
 }
