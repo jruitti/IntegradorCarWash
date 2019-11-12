@@ -22,6 +22,10 @@ public class Vehiculo {
         }else return new Vehiculo(idVehiculo,matricula,marca,modelo);
     }
 
+    public int getIdVehiculo() {
+        return idVehiculo;
+    }
+
     public String getMatricula() {
         return matricula;
     }
