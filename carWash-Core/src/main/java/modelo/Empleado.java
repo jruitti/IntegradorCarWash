@@ -21,5 +21,18 @@ public class Empleado {
         else {
             return new Empleado(idEmpleado, nombre, legajo);
         }
+
+    }
+
+    public Integer getIdEmpleado() {
+        return idEmpleado;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public Integer getLegajo() {
+        return legajo;
     }
 }
