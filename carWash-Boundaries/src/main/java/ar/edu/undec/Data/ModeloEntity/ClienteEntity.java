@@ -7,6 +7,8 @@ import java.util.Collection;
 
 @Entity(name="clientes")
 @SequenceGenerator(name="seq_cliente", sequenceName = "seq_cliente",initialValue = 1, allocationSize = 1)
+
+
 public class ClienteEntity {
 
     @Id
@@ -17,9 +19,9 @@ public class ClienteEntity {
     private String barrio;
     private String documento;
 
-    @OneToMany(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "vehiculo_id")
-    private Collection<Vehiculo> vehiculos;
+   // @OneToMany(cascade = CascadeType.MERGE)
+   // @JoinColumn(name = "vehiculo_id")
+    //private Collection<Vehiculo> vehiculos;
 
     public ClienteEntity(){}
 
@@ -63,11 +65,11 @@ public class ClienteEntity {
         this.documento = documento;
     }
 
-   public Collection<Vehiculo> getVehiculos() {
+  /* public Collection<Vehiculo> getVehiculos() {
         return vehiculos;
     }
 
     public void setVehiculos(Collection<Vehiculo> vehiculos) {
         this.vehiculos = vehiculos;
-    }
+    }*/
 }
