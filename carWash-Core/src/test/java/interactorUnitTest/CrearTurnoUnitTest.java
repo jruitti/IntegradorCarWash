@@ -14,6 +14,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import repositorio.IRepositorioCrearTurno;
+import repositorio.IRepositorioCrearVehiculo;
 
 import java.time.LocalDate;
 
@@ -22,15 +23,9 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 public class CrearTurnoUnitTest {
     @Mock
-<<<<<<< HEAD
     IRepositorioCrearTurno crearTurnoRepo;
-=======
-    ICrearTurnoRepo crearTurnoRepo;
     @Mock
     IRepositorioCrearVehiculo repositorioCrearVehiculo;
->>>>>>> master
-
-
 
     @Test
     public void crearTurno_TurnoNoExiste_GuardaCorrectamente() throws TurnoIncompletoException, TurnoExisteException, VehiculoIncompletoException, EmpleadoIncompletoException {
@@ -44,18 +39,9 @@ public class CrearTurnoUnitTest {
     @Test
     public void crearTurno_TurnoExiste_TurnoExisteException() throws TurnoIncompletoException, VehiculoIncompletoException, EmpleadoIncompletoException {
         Vehiculo vehiculoNuevo = Vehiculo.factoryVehiculo(1, "NRP374","Toyota","2000");
-<<<<<<< HEAD
         Turno turnoNuevo = Turno.factoryTurno(1, vehiculoNuevo, LocalDate.of(2019, 11, 9), Empleado.factoryEmpleado(1, "Luis", 234), 100);
         when(crearTurnoRepo.findByVehiculoYFecha("NRP374", LocalDate.of(2019, 11, 9))).thenReturn(Turno.factoryTurno(1, vehiculoNuevo, LocalDate.of(2019, 11, 9), Empleado.factoryEmpleado(1, "pepe", 546), 250));
-        CrearTurnoUseCase crearTurnoUseCase = new CrearTurnoUseCase(crearTurnoRepo);
-=======
-        when(repositorioCrearVehiculo.findByMatricula("NRP374")).thenReturn(vehiculoNuevo);
-
-        Turno turnoNuevo = Turno.factoryTurno(1, vehiculoNuevo, LocalDate.of(2019, 11, 9), Empleado.factoryEmpleado(1, "Luis", 234), 100);
-        when(crearTurnoRepo.findBFecha(LocalDate.of(2019, 11, 9))).thenReturn(Turno.factoryTurno(1, vehiculoNuevo, LocalDate.of(2019, 11, 9), Empleado.factoryEmpleado(1, "pepe", 546), 250));
-
-        CrearTurnoUseCase crearTurnoUseCase = new CrearTurnoUseCase(crearTurnoRepo,repositorioCrearVehiculo);
->>>>>>> master
+        CrearTurnoUseCase crearTurnoUseCase = new CrearTurnoUseCase(crearTurnoRepo, repositorioCrearVehiculo);
         Assertions.assertThrows(TurnoExisteException.class, () -> crearTurnoUseCase.crearTurno(turnoNuevo));
     }
 
