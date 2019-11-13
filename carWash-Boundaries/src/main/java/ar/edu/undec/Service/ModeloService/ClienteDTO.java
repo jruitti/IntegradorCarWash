@@ -1,20 +1,27 @@
-package ar.edu.undec.Data.ModeloEntity;
-import javax.persistence.*;
-import java.util.Collection;
+package ar.edu.undec.Service.ModeloService;
 
-@Entity(name="clientes")
-@SequenceGenerator(name="seq_cliente", sequenceName = "seq_cliente",initialValue = 1, allocationSize = 1)
-public class ClienteEntity {
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_cliente")
+public class ClienteDTO {
+
+    @JsonProperty("idCliente")
     private Integer idCliente;
+    @JsonProperty("nombre")
     private String nombre;
+    @JsonProperty("domicilio")
     private String domicilio;
+    @JsonProperty("barrio")
     private String barrio;
+    @JsonProperty("documento")
     private String documento;
 
-    public ClienteEntity(){}
+    public ClienteDTO(@JsonProperty("idCliente") Integer idCliente, @JsonProperty("nombre") String nombre,@JsonProperty("domicilio") String domicilio,@JsonProperty("barrio") String barrio, @JsonProperty("documento") String documento){
+        this.idCliente=idCliente;
+        this.nombre=nombre;
+        this.domicilio=domicilio;
+        this.barrio=barrio;
+        this.documento=documento;
+    }
 
     public Integer getIdCliente() {
         return idCliente;
@@ -55,6 +62,4 @@ public class ClienteEntity {
     public void setDocumento(String documento) {
         this.documento = documento;
     }
-
-
 }

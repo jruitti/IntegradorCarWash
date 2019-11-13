@@ -14,7 +14,6 @@ public class ClienteEntityMapper {
         clienteEntity.setDomicilio(clienteCore.getDomicilio());
         clienteEntity.setBarrio(clienteCore.getBarrio());
         clienteEntity.setDocumento(clienteCore.getDocumento());
-       // clienteEntity.setVehiculos(new VehiculoEntityMapper().mapeoCoreData(clienteCore.getVehiculos()));
         return clienteEntity;
     }
 
@@ -24,7 +23,7 @@ public class ClienteEntityMapper {
                 return Cliente.factoryCliente(elCliente.getIdCliente(),elCliente.getNombre(),elCliente.getDomicilio(),elCliente.getBarrio(),elCliente.getDocumento());
             }
             return null;
-            //falta la exception vehiculo de la coleccion
+
         } catch (ClienteIncompletoException e ) {
             e.printStackTrace();
             return null;
