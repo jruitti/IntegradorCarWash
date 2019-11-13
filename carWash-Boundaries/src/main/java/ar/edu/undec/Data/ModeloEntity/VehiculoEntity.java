@@ -1,6 +1,8 @@
 package ar.edu.undec.Data.ModeloEntity;
 
 
+import modelo.Cliente;
+
 import javax.persistence.*;
 
 @Entity(name="vehiculos")
@@ -13,6 +15,7 @@ public class VehiculoEntity {
     private String matricula;
     private String marca;
     private String modelo;
+    private Cliente cliente;
 
     public VehiculoEntity(){}
 
@@ -46,5 +49,13 @@ public class VehiculoEntity {
 
     public void setModelo(String modelo) {
         this.modelo = modelo;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 }

@@ -23,7 +23,7 @@ public class TurnoEntityMapper {
     public Turno mapeoDataCore(TurnoEntity elTurno){
         try{
             return Turno.factoryTurno(elTurno.getIdPedido(), Vehiculo.factoryVehiculo(elTurno.getVehiculo().getIdVehiculo(),
-                        elTurno.getVehiculo().getMatricula(),elTurno.getVehiculo().getMarca(), elTurno.getVehiculo().getModelo()),
+                        elTurno.getVehiculo().getMatricula(),elTurno.getVehiculo().getMarca(), elTurno.getVehiculo().getModelo(), elTurno.getVehiculo().getCliente()),
                         elTurno.getFecha(), Empleado.factoryEmpleado(elTurno.getEncargado().getIdEmpleado(),elTurno.getEncargado().getNombre(),elTurno.getEncargado().getLegajo()), elTurno.getPrecio());
         }catch (TurnoIncompletoException | VehiculoIncompletoException | EmpleadoIncompletoException e) {
             e.printStackTrace();

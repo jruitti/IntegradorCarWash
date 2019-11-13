@@ -12,6 +12,7 @@ public class VehiculoEntityMapper {
         vehiculoEntity.setMatricula(vehiculoCore.getMatricula());
         vehiculoEntity.setMarca(vehiculoCore.getMarca());
         vehiculoEntity.setModelo(vehiculoCore.getModelo());
+        vehiculoEntity.setCliente(new ClienteEntityMapper().mapeoCoreData(vehiculoCore.getCliente()));
 
         return vehiculoEntity;
     }
@@ -19,7 +20,7 @@ public class VehiculoEntityMapper {
     public Vehiculo mapeoDataCore(VehiculoEntity elVehiculo){
         try{
             if(elVehiculo != null)
-                return Vehiculo.factoryVehiculo(elVehiculo.getIdVehiculo(), elVehiculo.getMatricula(), elVehiculo.getMarca(), elVehiculo.getModelo());
+                return Vehiculo.factoryVehiculo(elVehiculo.getIdVehiculo(), elVehiculo.getMatricula(), elVehiculo.getMarca(), elVehiculo.getModelo(), elVehiculo.getCliente());
             return null;
         } catch (VehiculoIncompletoException e) {
             e.printStackTrace();
