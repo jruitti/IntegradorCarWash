@@ -40,7 +40,7 @@ public class CrearTurnoUnitTest {
     public void crearTurno_TurnoExiste_TurnoExisteException() throws TurnoIncompletoException, VehiculoIncompletoException, EmpleadoIncompletoException {
         Vehiculo vehiculoNuevo = Vehiculo.factoryVehiculo(1, "NRP374","Toyota","2000");
         Turno turnoNuevo = Turno.factoryTurno(1, vehiculoNuevo, LocalDate.of(2019, 11, 9), Empleado.factoryEmpleado(1, "Luis", 234), 100);
-        when(crearTurnoRepo.findByVehiculoYFecha("NRP374", LocalDate.of(2019, 11, 9))).thenReturn(Turno.factoryTurno(1, vehiculoNuevo, LocalDate.of(2019, 11, 9), Empleado.factoryEmpleado(1, "pepe", 546), 250));
+        when(crearTurnoRepo.findByVehiculoAndFecha("NRP374", LocalDate.of(2019, 11, 9))).thenReturn(Turno.factoryTurno(1, vehiculoNuevo, LocalDate.of(2019, 11, 9), Empleado.factoryEmpleado(1, "pepe", 546), 250));
         CrearTurnoUseCase crearTurnoUseCase = new CrearTurnoUseCase(crearTurnoRepo, repositorioCrearVehiculo);
         Assertions.assertThrows(TurnoExisteException.class, () -> crearTurnoUseCase.crearTurno(turnoNuevo));
     }

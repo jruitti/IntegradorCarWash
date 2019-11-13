@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IBuscarClientePorDniCRUD extends CrudRepository<ClienteEntity,Integer> {
-    ClienteEntity findByDni(String documento);
+    ClienteEntity findByDocumento(String documento);
 }
