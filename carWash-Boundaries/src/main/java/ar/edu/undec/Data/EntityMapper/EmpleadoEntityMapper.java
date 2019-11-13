@@ -15,10 +15,10 @@ public class EmpleadoEntityMapper {
         return empleadoEntity;
     }
 
-    public Empleado mapeoDataCore(EmpleadoEntity empleadoEntity){
+    public Empleado mapeoDataCore(EmpleadoEntity elEmpleado){
         try {
-            if(empleadoEntity != null){
-                return Empleado.factoryEmpleado(empleadoEntity.getIdEmpleado(),empleadoEntity.getNombre(),empleadoEntity.getLegajo());
+            if(elEmpleado != null){
+                return Empleado.factoryEmpleado(elEmpleado.getIdEmpleado(),elEmpleado.getNombre(),elEmpleado.getLegajo());
             }
             return null;
         }

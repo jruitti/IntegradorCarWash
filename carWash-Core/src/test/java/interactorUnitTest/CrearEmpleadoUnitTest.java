@@ -3,14 +3,13 @@ package interactorUnitTest;
 import excepciones.EmpleadoExisteException;
 import excepciones.EmpleadoIncompletoException;
 import interactor.CrearEmpleadoUseCase;
-import interactor.CrearVehiculoUseCase;
 import mockito.MockitoExtension;
 import modelo.Empleado;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import repositorio.ICrearEmpleadoRepo;
+import repositorio.IRepositorioCrearEmpleado;
 
 import static org.mockito.Mockito.when;
 
@@ -18,7 +17,7 @@ import static org.mockito.Mockito.when;
 public class CrearEmpleadoUnitTest {
 
     @Mock
-    ICrearEmpleadoRepo crearEmpleadoRepo;
+    IRepositorioCrearEmpleado crearEmpleadoRepo;
 
     @Test
     public void crearEmpleado_EmpleadoNoExiste_GuardaCorrectamente() throws EmpleadoIncompletoException, EmpleadoExisteException {

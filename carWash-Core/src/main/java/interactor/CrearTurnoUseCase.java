@@ -2,24 +2,18 @@ package interactor;
 
 import excepciones.TurnoExisteException;
 import modelo.Turno;
-import modelo.Vehiculo;
-import repositorio.ICrearTurnoRepo;
-import repositorio.IRepositorioCrearVehiculo;
+import repositorio.IRepositorioCrearTurno;
 
 public class CrearTurnoUseCase {
-    private ICrearTurnoRepo crearTurnoRepo;
+    private IRepositorioCrearTurno crearTurnoGateway;
 
-
-    public CrearTurnoUseCase(ICrearTurnoRepo crearTurnoRepo) {
-        this.crearTurnoRepo=crearTurnoRepo;
-
+    public CrearTurnoUseCase(IRepositorioCrearTurno crearTurnoGateway) {
+        this.crearTurnoGateway= crearTurnoGateway;
     }
 
-
-
     public boolean crearTurno(Turno turnoNuevo) throws TurnoExisteException {
-        if((crearTurnoRepo.findVehiculo(turnoNuevo.getVehiculo().getMatricula())==null)||(crearTurnoRepo.findBFecha(turnoNuevo.getFecha())==null)) {
-            return this.crearTurnoRepo.guardar(turnoNuevo);
-        }else throw new TurnoExisteException("El turno no disponible");
+        if(this.crearTurnoGateway.findByVehiculoYFecha(turnoNuevo.getVehiculo().getMatricula(), turnoNuevo.getFecha()) == null) {
+            return this.crearTurnoGateway.guardar(turnoNuevo);
+        }else throw new TurnoExisteException("Turno no disponible");
     }
 }

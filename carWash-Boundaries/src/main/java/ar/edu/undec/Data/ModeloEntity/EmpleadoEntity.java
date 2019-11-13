@@ -1,10 +1,6 @@
 package ar.edu.undec.Data.ModeloEntity;
-
-import modelo.Turno;
-
 import javax.persistence.*;
 import java.util.Collection;
-import java.util.List;
 
 @Entity(name = "empleados")
 @SequenceGenerator(name = "seq_empleado", sequenceName = "seq_empleado", initialValue = 1, allocationSize = 1)
@@ -17,8 +13,8 @@ public class EmpleadoEntity {
     private Integer legajo;
 
     @OneToMany(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "empleado_id")
-    private Collection<Turno> turnos;
+    @JoinColumn(name = "turno_id")
+    private Collection<TurnoEntity> turnos;
 
     public EmpleadoEntity(){
 
@@ -46,5 +42,13 @@ public class EmpleadoEntity {
 
     public void setLegajo(Integer legajo) {
         this.legajo = legajo;
+    }
+
+    public Collection<TurnoEntity> getTurnos() {
+        return turnos;
+    }
+
+    public void setTurnos(Collection<TurnoEntity> turnos) {
+        this.turnos = turnos;
     }
 }
