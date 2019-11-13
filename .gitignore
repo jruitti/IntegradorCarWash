@@ -4,3 +4,5 @@
 *.iml
 
 carWash-Core/src/test/java/modelo/VehiculoUnitTest.java
+
+carWash-Core/target/
