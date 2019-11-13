@@ -1,7 +1,6 @@
 package ar.edu.undec.Data.ModeloEntity;
 import javax.persistence.*;
 import java.util.Collection;
-import java.util.List;
 
 @Entity(name="clientes")
 @SequenceGenerator(name="seq_cliente", sequenceName = "seq_cliente",initialValue = 1, allocationSize = 1)

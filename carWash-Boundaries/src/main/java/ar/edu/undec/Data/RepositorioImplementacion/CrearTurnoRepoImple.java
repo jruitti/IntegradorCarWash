@@ -24,8 +24,8 @@ public class CrearTurnoRepoImple implements IRepositorioCrearTurno {
     }
 
     @Override
-    public Turno findByVehiculoYFecha(String matricula, LocalDate fecha) {
-        Turno elTurno = new TurnoEntityMapper().mapeoDataCore(buscarTurnoPorVehiculoYFechaCRUD.findByVehiculoYFecha(matricula, fecha));
+    public Turno findByVehiculoAndFecha(String matricula, LocalDate fecha) {
+        Turno elTurno = new TurnoEntityMapper().mapeoDataCore(buscarTurnoPorVehiculoYFechaCRUD.findByVehiculoAndFecha(matricula, fecha));
         if (elTurno != null) {
             return elTurno;
         }
