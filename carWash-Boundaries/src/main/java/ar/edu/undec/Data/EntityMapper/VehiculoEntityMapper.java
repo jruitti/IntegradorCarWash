@@ -12,6 +12,7 @@ public class VehiculoEntityMapper {
         vehiculoEntity.setMatricula(vehiculoCore.getMatricula());
         vehiculoEntity.setMarca(vehiculoCore.getMarca());
         vehiculoEntity.setModelo(vehiculoCore.getModelo());
+
         return vehiculoEntity;
     }
 

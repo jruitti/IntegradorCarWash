@@ -18,11 +18,11 @@ public class TurnoEntity {
     private LocalDate fecha;
     private float precio;
 
-    @OneToOne(cascade = CascadeType.MERGE)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "empleado_id")
     private EmpleadoEntity encargado;
 
-    @OneToOne(cascade = CascadeType.MERGE)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "vehiculo_id")
     private VehiculoEntity vehiculo;
 

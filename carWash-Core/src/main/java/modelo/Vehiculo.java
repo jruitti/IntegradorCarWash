@@ -8,18 +8,20 @@ public class Vehiculo {
     private String matricula;
     private String marca;
     private String modelo;
+    private Empleado empleado;
 
-    private Vehiculo(int idVehiculo, String matricula, String marca, String modelo) {
+    private Vehiculo(int idVehiculo, String matricula, String marca, String modelo, Empleado empleado) {
         this.idVehiculo = idVehiculo;
         this.matricula = matricula;
         this.marca = marca;
         this.modelo = modelo;
+        this.empleado = empleado;
     }
 
-    public static Vehiculo factoryVehiculo(Integer idVehiculo, String matricula, String marca, String modelo)throws VehiculoIncompletoException {
+    public static Vehiculo factoryVehiculo(Integer idVehiculo, String matricula, String marca, String modelo, Empleado empleado)throws VehiculoIncompletoException {
         if(matricula==null||marca==null||modelo==null){
             throw new VehiculoIncompletoException("No puede faltar ningun campo obligatorio");
-        }else return new Vehiculo(idVehiculo,matricula,marca,modelo);
+        }else return new Vehiculo(idVehiculo,matricula,marca,modelo, empleado);
     }
 
     public Integer getIdVehiculo() {
@@ -44,5 +46,13 @@ public class Vehiculo {
 
     public void setModelo(String modelo) {
         this.modelo = modelo;
+    }
+
+    public Empleado getEmpleado() {
+        return empleado;
+    }
+
+    public void setEmpleado(Empleado empleado) {
+        this.empleado = empleado;
     }
 }
