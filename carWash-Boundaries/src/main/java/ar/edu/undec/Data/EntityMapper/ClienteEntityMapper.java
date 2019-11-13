@@ -3,6 +3,7 @@ package ar.edu.undec.Data.EntityMapper;
 import ar.edu.undec.Data.ModeloEntity.ClienteEntity;
 import excepciones.ClienteIncompletoException;
 import modelo.Cliente;
+import modelo.Vehiculo;
 
 public class ClienteEntityMapper {
 
@@ -13,7 +14,7 @@ public class ClienteEntityMapper {
         clienteEntity.setDomicilio(clienteCore.getDomicilio());
         clienteEntity.setBarrio(clienteCore.getBarrio());
         clienteEntity.setDocumento(clienteCore.getDocumento());
-        //clienteEntity.setVehiculos(new ); falta la coleccion vehiculo
+       // clienteEntity.setVehiculos(new VehiculoEntityMapper().mapeoCoreData(clienteCore.));
         return clienteEntity;
     }
 

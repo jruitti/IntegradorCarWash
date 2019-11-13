@@ -1,6 +1,7 @@
 package ar.edu.undec.Data.ModeloEntity;
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.List;
 
 @Entity(name="clientes")
 @SequenceGenerator(name="seq_cliente", sequenceName = "seq_cliente",initialValue = 1, allocationSize = 1)
@@ -14,9 +15,17 @@ public class ClienteEntity {
     private String barrio;
     private String documento;
 
+<<<<<<< HEAD
     @OneToMany(cascade = CascadeType.MERGE)
     @JoinColumn(name = "vehiculo_id")
     private Collection<VehiculoEntity> vehiculos;
+=======
+
+    //@OneToMany(cascade = CascadeType.MERGE)
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "vehiculo_id")
+    private List<Vehiculo> vehiculos;
+>>>>>>> master
 
     public ClienteEntity(){}
 
@@ -60,11 +69,19 @@ public class ClienteEntity {
         this.documento = documento;
     }
 
+<<<<<<< HEAD
     public Collection<VehiculoEntity> getVehiculos() {
         return vehiculos;
     }
 
     public void setVehiculos(Collection<VehiculoEntity> vehiculos) {
+=======
+   public Collection<Vehiculo> getVehiculos() {
+        return vehiculos;
+    }
+
+    public void setVehiculos(List<Vehiculo> vehiculos) {
+>>>>>>> master
         this.vehiculos = vehiculos;
     }
 }
