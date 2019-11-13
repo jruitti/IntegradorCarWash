@@ -14,6 +14,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import repositorio.IRepositorioCrearTurno;
+import repositorio.IRepositorioCrearVehiculo;
 
 import java.time.LocalDate;
 
@@ -23,14 +24,14 @@ import static org.mockito.Mockito.when;
 public class CrearTurnoUnitTest {
     @Mock
     IRepositorioCrearTurno crearTurnoRepo;
-
-
+    @Mock
+    IRepositorioCrearVehiculo repositorioCrearVehiculo;
 
     @Test
     public void crearTurno_TurnoNoExiste_GuardaCorrectamente() throws TurnoIncompletoException, TurnoExisteException, VehiculoIncompletoException, EmpleadoIncompletoException {
         Turno turnoNuevo=Turno.factoryTurno(1, Vehiculo.factoryVehiculo(1,"IXI056","Toyota","2019"), LocalDate.of(2019, 11, 9), Empleado.factoryEmpleado(1,"Luis",234),100);
         when(crearTurnoRepo.guardar(turnoNuevo)).thenReturn(true);
-        CrearTurnoUseCase crearTurnoUseCase = new CrearTurnoUseCase(crearTurnoRepo);
+        CrearTurnoUseCase crearTurnoUseCase = new CrearTurnoUseCase(crearTurnoRepo,repositorioCrearVehiculo);
         boolean resultado = crearTurnoUseCase.crearTurno(turnoNuevo);
         Assertions.assertTrue(resultado);
 
@@ -39,8 +40,10 @@ public class CrearTurnoUnitTest {
     public void crearTurno_TurnoExiste_TurnoExisteException() throws TurnoIncompletoException, VehiculoIncompletoException, EmpleadoIncompletoException {
         Vehiculo vehiculoNuevo = Vehiculo.factoryVehiculo(1, "NRP374","Toyota","2000");
         Turno turnoNuevo = Turno.factoryTurno(1, vehiculoNuevo, LocalDate.of(2019, 11, 9), Empleado.factoryEmpleado(1, "Luis", 234), 100);
-        when(crearTurnoRepo.findByVehiculoYFecha("NRP374", LocalDate.of(2019, 11, 9))).thenReturn(Turno.factoryTurno(1, vehiculoNuevo, LocalDate.of(2019, 11, 9), Empleado.factoryEmpleado(1, "pepe", 546), 250));
-        CrearTurnoUseCase crearTurnoUseCase = new CrearTurnoUseCase(crearTurnoRepo);
+        when(crearTurnoRepo.findByVehiculoAndFecha("NRP374", LocalDate.of(2019, 11, 9))).thenReturn(Turno.factoryTurno(1, vehiculoNuevo, LocalDate.of(2019, 11, 9), Empleado.factoryEmpleado(1, "pepe", 546), 250));
+        CrearTurnoUseCase crearTurnoUseCase = new CrearTurnoUseCase(crearTurnoRepo, repositorioCrearVehiculo);
         Assertions.assertThrows(TurnoExisteException.class, () -> crearTurnoUseCase.crearTurno(turnoNuevo));
     }
+
+
 }

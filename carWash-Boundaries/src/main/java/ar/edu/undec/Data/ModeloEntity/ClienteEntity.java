@@ -14,9 +14,11 @@ public class ClienteEntity {
     private String barrio;
     private String documento;
 
+
     @OneToMany(cascade = CascadeType.MERGE)
     @JoinColumn(name = "vehiculo_id")
     private Collection<VehiculoEntity> vehiculos;
+
 
     public ClienteEntity(){}
 

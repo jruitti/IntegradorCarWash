@@ -6,5 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 import java.time.LocalDate;
 
 public interface IBuscarTurnoPorVehiculoYFechaCRUD extends CrudRepository<TurnoEntity, Integer> {
-    TurnoEntity findByVehiculoYFecha(String matricula, LocalDate fecha);
+    TurnoEntity findByVehiculoAndFecha(String matricula, LocalDate fecha);
 }

@@ -8,6 +8,7 @@ import modelo.Empleado;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import repositorio.IRepositorioCrearEmpleado;
+
 @Repository
 public class CrearEmpleadoRepoImple implements IRepositorioCrearEmpleado {
 

@@ -6,5 +6,5 @@ public interface IRepositorioCrearCliente {
 
     boolean guardar(Cliente clienteNuevo);
 
-    Cliente findByDNI(String s);
+    Cliente findByDocumento(String documento);
 }

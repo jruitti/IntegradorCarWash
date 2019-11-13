@@ -23,11 +23,12 @@ public class CrearClienteRepoImple implements IRepositorioCrearCliente {
     }
 
     @Override
-    public Cliente findByDNI(String DNI) {
-        Cliente elCliente= new ClienteEntityMapper().mapeoDataCore(buscarClientePorDniCRUD.findByDni(DNI));
+    public Cliente findByDocumento(String documento) {
+        Cliente elCliente= new ClienteEntityMapper().mapeoDataCore(buscarClientePorDniCRUD.findByDocumento(documento));
         if(elCliente!=null){
             return elCliente;
         }
         return null;
     }
+
 }

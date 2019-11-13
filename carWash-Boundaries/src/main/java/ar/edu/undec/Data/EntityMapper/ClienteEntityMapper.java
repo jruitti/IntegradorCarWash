@@ -3,6 +3,7 @@ package ar.edu.undec.Data.EntityMapper;
 import ar.edu.undec.Data.ModeloEntity.ClienteEntity;
 import excepciones.ClienteIncompletoException;
 import modelo.Cliente;
+import modelo.Vehiculo;
 
 public class ClienteEntityMapper {
 

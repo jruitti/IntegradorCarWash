@@ -1,5 +1,4 @@
 package ar.edu.undec.DataIntegrationTest;
-
 import ar.edu.undec.Data.RepositorioImplementacion.CrearEmpleadoRepoImple;
 import excepciones.EmpleadoIncompletoException;
 import modelo.Empleado;
@@ -13,6 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+
 public class CrearEmpleadoIT {
     @Autowired
     private CrearEmpleadoRepoImple crearEmpleadoRepositoryImplemens;
