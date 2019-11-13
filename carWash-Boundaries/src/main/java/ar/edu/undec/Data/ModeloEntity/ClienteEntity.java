@@ -15,17 +15,11 @@ public class ClienteEntity {
     private String barrio;
     private String documento;
 
-<<<<<<< HEAD
+
     @OneToMany(cascade = CascadeType.MERGE)
     @JoinColumn(name = "vehiculo_id")
     private Collection<VehiculoEntity> vehiculos;
-=======
 
-    //@OneToMany(cascade = CascadeType.MERGE)
-    @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "vehiculo_id")
-    private List<Vehiculo> vehiculos;
->>>>>>> master
 
     public ClienteEntity(){}
 
@@ -69,19 +63,11 @@ public class ClienteEntity {
         this.documento = documento;
     }
 
-<<<<<<< HEAD
     public Collection<VehiculoEntity> getVehiculos() {
         return vehiculos;
     }
 
     public void setVehiculos(Collection<VehiculoEntity> vehiculos) {
-=======
-   public Collection<Vehiculo> getVehiculos() {
-        return vehiculos;
-    }
-
-    public void setVehiculos(List<Vehiculo> vehiculos) {
->>>>>>> master
         this.vehiculos = vehiculos;
     }
 }
