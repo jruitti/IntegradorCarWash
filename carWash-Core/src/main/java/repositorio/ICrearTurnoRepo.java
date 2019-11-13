@@ -9,5 +9,5 @@ public interface ICrearTurnoRepo {
     boolean guardar(Turno turnoNuevo);
 
     Turno findBFecha(LocalDate fecha);
-    Vehiculo findVehiculo(String matricula);
+
 }

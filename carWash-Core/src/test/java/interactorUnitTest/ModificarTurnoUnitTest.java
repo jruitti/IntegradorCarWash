@@ -14,6 +14,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import repositorio.IModificarTurnoRepo;
+import repositorio.IRepositorioCrearVehiculo;
 
 import java.time.LocalDate;
 
@@ -24,16 +25,17 @@ public class ModificarTurnoUnitTest {
 
     @Mock
     IModificarTurnoRepo modificarTurnoRepo;
-
+    @Mock
+    IRepositorioCrearVehiculo repositorioCrearVehiculo;
     @Test
     public void modificarTurno_TurnoExistente_GuardaCorrectamente() throws VehiculoIncompletoException, EmpleadoIncompletoException, TurnoIncompletoException, TurnoExisteException {
         Vehiculo vehiculoNuevo = Vehiculo.factoryVehiculo(1, "NRP374","Toyota","2000");
-        when(modificarTurnoRepo.findMatricula("NRP374")).thenReturn(null);
+        when(repositorioCrearVehiculo.findByMatricula("NRP374")).thenReturn(null);
 
         Turno turnoDatosNuevo = Turno.factoryTurno(1, vehiculoNuevo, LocalDate.of(2019, 11, 9), Empleado.factoryEmpleado(1, "Luis", 234), 100);
         when(modificarTurnoRepo.findBFecha(LocalDate.of(2019, 11, 9))).thenReturn(null);
         when(modificarTurnoRepo.modificarTurno(turnoDatosNuevo)).thenReturn(true);
-        ModificarTurnoUseCase modificarTurnoUseCase= new ModificarTurnoUseCase(modificarTurnoRepo);
+        ModificarTurnoUseCase modificarTurnoUseCase= new ModificarTurnoUseCase(modificarTurnoRepo,repositorioCrearVehiculo);
         boolean resultado= modificarTurnoUseCase.modificarTurno(turnoDatosNuevo);
         Assertions.assertTrue(resultado);
 
@@ -42,11 +44,11 @@ public class ModificarTurnoUnitTest {
     public void ModificarTurno_ConflictoEnId_TurnoExistente() throws TurnoIncompletoException, VehiculoIncompletoException, EmpleadoIncompletoException {
 
         Vehiculo vehiculoNuevo = Vehiculo.factoryVehiculo(1, "NRP374","Toyota","2000");
-        when(modificarTurnoRepo.findMatricula("NRP374")).thenReturn(Vehiculo.factoryVehiculo(1, "NRP374","Toyota","2000"));
+        when(repositorioCrearVehiculo.findByMatricula("NRP374")).thenReturn(Vehiculo.factoryVehiculo(1, "NRP374","Toyota","2000"));
 
         Turno turnoDatosNuevo = Turno.factoryTurno(1, vehiculoNuevo, LocalDate.of(2019, 11, 9), Empleado.factoryEmpleado(1, "Luis", 234), 100);
         when(modificarTurnoRepo.findBFecha(LocalDate.of(2019, 11, 9))).thenReturn(Turno.factoryTurno(2, vehiculoNuevo, LocalDate.of(2019, 11, 9), Empleado.factoryEmpleado(1, "Luis", 234), 100));
-        ModificarTurnoUseCase modificarTurnoUseCase = new ModificarTurnoUseCase(modificarTurnoRepo);
+        ModificarTurnoUseCase modificarTurnoUseCase = new ModificarTurnoUseCase(modificarTurnoRepo,repositorioCrearVehiculo);
         Assertions.assertThrows(TurnoExisteException.class, () -> modificarTurnoUseCase.modificarTurno(turnoDatosNuevo));
     }
 
@@ -54,12 +56,12 @@ public class ModificarTurnoUnitTest {
     public void modificarTurno_ConflictoConTurnoExistentePeroEsElMismo_GuardaCorrectamente() throws VehiculoIncompletoException, EmpleadoIncompletoException, TurnoIncompletoException, TurnoExisteException {
 
         Vehiculo vehiculoNuevo = Vehiculo.factoryVehiculo(1, "NRP374","Toyota","2000");
-        when(modificarTurnoRepo.findMatricula("NRP374")).thenReturn(Vehiculo.factoryVehiculo(1, "NRP374","Toyota","2000"));
+        when(repositorioCrearVehiculo.findByMatricula("NRP374")).thenReturn(Vehiculo.factoryVehiculo(1, "NRP374","Toyota","2000"));
 
         Turno turnoDatosNuevo = Turno.factoryTurno(1, vehiculoNuevo, LocalDate.of(2019, 11, 9), Empleado.factoryEmpleado(1, "Luis", 234), 100);
         when(modificarTurnoRepo.findBFecha(LocalDate.of(2019, 11, 9))).thenReturn(Turno.factoryTurno(1, vehiculoNuevo, LocalDate.of(2019, 11, 9), Empleado.factoryEmpleado(1, "Pedro", 235), 200));
        when(modificarTurnoRepo.modificarTurno(turnoDatosNuevo)).thenReturn(true);
-        ModificarTurnoUseCase modificarTurnoUseCase = new ModificarTurnoUseCase(modificarTurnoRepo);
+        ModificarTurnoUseCase modificarTurnoUseCase = new ModificarTurnoUseCase(modificarTurnoRepo,repositorioCrearVehiculo);
         boolean resultado=modificarTurnoUseCase.modificarTurno(turnoDatosNuevo);
         Assertions.assertTrue(resultado);
 

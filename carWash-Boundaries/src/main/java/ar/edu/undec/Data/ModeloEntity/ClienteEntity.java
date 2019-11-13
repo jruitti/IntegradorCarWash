@@ -4,6 +4,7 @@ import modelo.Vehiculo;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.List;
 
 @Entity(name="clientes")
 @SequenceGenerator(name="seq_cliente", sequenceName = "seq_cliente",initialValue = 1, allocationSize = 1)
@@ -19,9 +20,11 @@ public class ClienteEntity {
     private String barrio;
     private String documento;
 
-   // @OneToMany(cascade = CascadeType.MERGE)
-   // @JoinColumn(name = "vehiculo_id")
-    //private Collection<Vehiculo> vehiculos;
+
+    //@OneToMany(cascade = CascadeType.MERGE)
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "vehiculo_id")
+    private List<Vehiculo> vehiculos;
 
     public ClienteEntity(){}
 
@@ -65,11 +68,11 @@ public class ClienteEntity {
         this.documento = documento;
     }
 
-  /* public Collection<Vehiculo> getVehiculos() {
+   public Collection<Vehiculo> getVehiculos() {
         return vehiculos;
     }
 
-    public void setVehiculos(Collection<Vehiculo> vehiculos) {
+    public void setVehiculos(List<Vehiculo> vehiculos) {
         this.vehiculos = vehiculos;
-    }*/
+    }
 }

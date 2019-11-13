@@ -7,7 +7,7 @@ import ar.edu.undec.Data.RepositorioCRUD.ICrearEmpleadoCRUD;
 import modelo.Empleado;
 import org.springframework.beans.factory.annotation.Autowired;
 import repositorio.ICrearEmpleadoRepo;
-
+/*
 public class CrearEmpleadoRepositoryImplemens implements ICrearEmpleadoRepo {
 
     @Autowired
@@ -30,4 +30,4 @@ public class CrearEmpleadoRepositoryImplemens implements ICrearEmpleadoRepo {
         }
         return null;
     }
-}
+}*/

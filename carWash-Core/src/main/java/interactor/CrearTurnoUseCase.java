@@ -8,18 +8,19 @@ import repositorio.IRepositorioCrearVehiculo;
 
 public class CrearTurnoUseCase {
     private ICrearTurnoRepo crearTurnoRepo;
+    private IRepositorioCrearVehiculo repositorioCrearVehiculo;
 
-
-    public CrearTurnoUseCase(ICrearTurnoRepo crearTurnoRepo) {
+    public CrearTurnoUseCase(ICrearTurnoRepo crearTurnoRepo,IRepositorioCrearVehiculo repositorioCrearVehiculo) {
         this.crearTurnoRepo=crearTurnoRepo;
+        this.repositorioCrearVehiculo=repositorioCrearVehiculo;
 
     }
 
 
 
     public boolean crearTurno(Turno turnoNuevo) throws TurnoExisteException {
-        if((crearTurnoRepo.findVehiculo(turnoNuevo.getVehiculo().getMatricula())==null)||(crearTurnoRepo.findBFecha(turnoNuevo.getFecha())==null)) {
+        if((repositorioCrearVehiculo.findByMatricula(turnoNuevo.getVehiculo().getMatricula())==null)||(crearTurnoRepo.findBFecha(turnoNuevo.getFecha())==null)) {
             return this.crearTurnoRepo.guardar(turnoNuevo);
-        }else throw new TurnoExisteException("El turno no disponible");
+        }else  throw new TurnoExisteException("El turno no disponible");
     }
 }
