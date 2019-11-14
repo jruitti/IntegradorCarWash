@@ -1,5 +1,5 @@
 package ar.edu.undec.Service.ServiceMapper;
-/*
+
 import ar.edu.undec.Service.ModeloService.VehiculoDTO;
 import excepciones.VehiculoIncompletoException;
 import modelo.Vehiculo;
@@ -18,4 +18,4 @@ public class VehiculoDTOMapper {
             return null;
         }
     }
-}*/
+}
