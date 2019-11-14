@@ -1,6 +1,5 @@
 package ar.edu.undec.Service.Config;
 
-import input.ICrearClienteInput;
 import interactor.CrearClienteUseCase;
 import interactor.CrearVehiculoUseCase;
 import interactor.ObtenerVehiculoPorMatriculaUseCase;
@@ -19,6 +18,7 @@ public class UseCaseConfig {
 
     @Autowired
     private IObtenerVehiculoPorMatriculaRepo iObtenerVehiculoPorMatriculaRepo;
+
     @Autowired
         private IRepositorioCrearCliente iRepositorioCrearCliente;
 
