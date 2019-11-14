@@ -7,13 +7,9 @@ import repositorio.IRepositorioCrearVehiculo;
 
 public class CrearTurnoUseCase {
     private IRepositorioCrearTurno crearTurnoGateway;
-    private IRepositorioCrearVehiculo repositorioCrearVehiculo;
 
-    public CrearTurnoUseCase(IRepositorioCrearTurno crearTurnoGateway,IRepositorioCrearVehiculo repositorioCrearVehiculo) {
+    public CrearTurnoUseCase(IRepositorioCrearTurno crearTurnoGateway) {
         this.crearTurnoGateway=crearTurnoGateway;
-        this.repositorioCrearVehiculo=repositorioCrearVehiculo;
-
-
     }
 
     public boolean crearTurno(Turno turnoNuevo) throws TurnoExisteException {
