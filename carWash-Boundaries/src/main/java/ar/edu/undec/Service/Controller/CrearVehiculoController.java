@@ -1,5 +1,5 @@
 package ar.edu.undec.Service.Controller;
-/*
+
 import ar.edu.undec.Service.ModeloService.VehiculoDTO;
 import ar.edu.undec.Service.ServiceMapper.VehiculoDTOMapper;
 import excepciones.VehiculoExisteException;
@@ -31,4 +31,4 @@ public class CrearVehiculoController {
             return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).body(false);
         }
     }
-}*/
+}

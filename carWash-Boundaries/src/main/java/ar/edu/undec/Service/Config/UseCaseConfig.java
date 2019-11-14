@@ -17,9 +17,9 @@ public class UseCaseConfig {
     @Autowired
     private IRepositorioCrearVehiculo iRepositorioCrearVehiculo;
 
-   /* @Autowired
+    @Autowired
     private IObtenerVehiculoPorMatriculaRepo iObtenerVehiculoPorMatriculaRepo;
-    */@Autowired
+    @Autowired
         private IRepositorioCrearCliente iRepositorioCrearCliente;
 
     @Bean
@@ -28,11 +28,11 @@ public class UseCaseConfig {
         return new CrearVehiculoUseCase(iRepositorioCrearVehiculo);
     }
 
-   /* @Bean
+    @Bean
     public ObtenerVehiculoPorMatriculaUseCase obtenerVehiculoPorMatriculaUseCase() {
 
         return new ObtenerVehiculoPorMatriculaUseCase(iObtenerVehiculoPorMatriculaRepo);
-    }*/
+    }
     @Bean
     public CrearClienteUseCase crearClienteUseCase(){
         return new CrearClienteUseCase(iRepositorioCrearCliente);
