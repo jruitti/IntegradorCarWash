@@ -1,17 +1,12 @@
 package ar.edu.undec.Data.ModeloEntity;
 
-import modelo.Empleado;
-import modelo.Vehiculo;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity(name="turnos")
 @SequenceGenerator(name="seq_turno", sequenceName = "seq_turno",initialValue = 1, allocationSize = 1)
-
-
-
 public class TurnoEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_turno")
     private Integer idPedido;
