@@ -3,11 +3,10 @@ package ar.edu.undec.Data.EntityMapper;
 import ar.edu.undec.Data.ModeloEntity.ClienteEntity;
 import excepciones.ClienteIncompletoException;
 import modelo.Cliente;
-import modelo.Vehiculo;
 
 public class ClienteEntityMapper {
 
-    public ClienteEntity mapeoCoreData(Cliente clienteCore) {
+    public Cliente mapeoCoreData(Cliente clienteCore) {
         ClienteEntity clienteEntity =new ClienteEntity();
         clienteEntity.setIdCliente(clienteCore.getIdCliente());
         clienteEntity.setNombre(clienteCore.getNombre());
