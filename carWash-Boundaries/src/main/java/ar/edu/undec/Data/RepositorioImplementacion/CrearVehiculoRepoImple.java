@@ -16,6 +16,7 @@ public class CrearVehiculoRepoImple implements IRepositorioCrearVehiculo {
     @Autowired
     IBuscarVehiculoPorMatriculaCRUD buscarVehiculoPorMatriculaCRUD;
 
+    @Override
     public boolean guardar(Vehiculo vehiculoNuevo) {
         VehiculoEntity elVehiculoAGuardar = new VehiculoEntityMapper().mapeoCoreData(vehiculoNuevo);
         return crearVehiculoCRUD.save(elVehiculoAGuardar).getIdVehiculo()!= null;

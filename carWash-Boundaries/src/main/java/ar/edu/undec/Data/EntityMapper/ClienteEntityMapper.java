@@ -6,7 +6,7 @@ import modelo.Cliente;
 
 public class ClienteEntityMapper {
 
-    public Cliente mapeoCoreData(Cliente clienteCore) {
+    public ClienteEntity mapeoCoreData(Cliente clienteCore) {
         ClienteEntity clienteEntity =new ClienteEntity();
         clienteEntity.setIdCliente(clienteCore.getIdCliente());
         clienteEntity.setNombre(clienteCore.getNombre());

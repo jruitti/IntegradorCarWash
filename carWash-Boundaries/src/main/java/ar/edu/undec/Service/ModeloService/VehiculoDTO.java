@@ -1,6 +1,7 @@
 package ar.edu.undec.Service.ModeloService;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import modelo.Cliente;
 
 public class VehiculoDTO {
     @JsonProperty("idVehiculo")
@@ -11,13 +12,17 @@ public class VehiculoDTO {
     private String marca;
     @JsonProperty
     private String modelo;
+    @JsonProperty
+    private Cliente cliente;
+
 
     public VehiculoDTO(@JsonProperty("idVehiculo") Integer idVehiculo, @JsonProperty("matricula") String matricula,
-                       @JsonProperty("marca") String marca, @JsonProperty("modelo") String modelo) {
+                       @JsonProperty("marca") String marca, @JsonProperty("modelo") String modelo, @JsonProperty("cliente") Cliente cliente) {
         this.idVehiculo= idVehiculo;
         this.matricula = matricula;
         this.marca = marca;
         this.modelo = modelo;
+        this.cliente = cliente;
     }
 
     public Integer getIdVehiculo() {
@@ -50,5 +55,13 @@ public class VehiculoDTO {
 
     public void setModelo(String modelo) {
         this.modelo = modelo;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 }

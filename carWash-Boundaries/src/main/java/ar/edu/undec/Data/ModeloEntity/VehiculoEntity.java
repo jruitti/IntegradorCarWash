@@ -15,7 +15,7 @@ public class VehiculoEntity {
     private String matricula;
     private String marca;
     private String modelo;
-    private Cliente cliente;
+    private ClienteEntity cliente;
 
     public VehiculoEntity(){}
 
@@ -51,11 +51,11 @@ public class VehiculoEntity {
         this.modelo = modelo;
     }
 
-    public Cliente getCliente() {
+    public ClienteEntity getCliente() {
         return cliente;
     }
 
-    public void setCliente(Cliente cliente) {
+    public void setCliente(ClienteEntity cliente) {
         this.cliente = cliente;
     }
 }

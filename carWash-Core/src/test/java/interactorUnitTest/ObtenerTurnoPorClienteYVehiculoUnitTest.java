@@ -55,12 +55,14 @@ public class ObtenerTurnoPorClienteYVehiculoUnitTest {
     private List<Turno> factoryListaTurnos() {
         try {
             List<Turno> turnos=new ArrayList<>();
-            Turno turno1=Turno.factoryTurno(1, Vehiculo.factoryVehiculo(1,"IXI056","Toyota","2019"), LocalDate.of(2019, 11, 9), Empleado.factoryEmpleado(1,"Luis",234),100);
-            Turno turno2=Turno.factoryTurno(2, Vehiculo.factoryVehiculo(2,"LXI280","Peugeot","2015"), LocalDate.of(2019, 12, 9), Empleado.factoryEmpleado(1,"Luis",234),150);
+            Cliente clienteNuevo = Cliente.factoryCliente(1,"Pepe","Porahi 333", "Los guapos","0303456");
+            Cliente clienteNuevo2 = Cliente.factoryCliente(1,"Pipo","Porahi 222", "Los guapos","0303654");
+            Turno turno1=Turno.factoryTurno(1, Vehiculo.factoryVehiculo(1,"IXI056","Toyota","2019", clienteNuevo), LocalDate.of(2019, 11, 9), Empleado.factoryEmpleado(1,"Luis",234),100);
+            Turno turno2=Turno.factoryTurno(2, Vehiculo.factoryVehiculo(2,"LXI280","Peugeot","2015", clienteNuevo2), LocalDate.of(2019, 12, 9), Empleado.factoryEmpleado(1,"Luis",234),150);
             turnos.add(turno1);
             turnos.add(turno2);
             return turnos;
-        } catch (EmpleadoIncompletoException | VehiculoIncompletoException |TurnoIncompletoException e) {
+        } catch (EmpleadoIncompletoException | VehiculoIncompletoException | TurnoIncompletoException | ClienteIncompletoException e) {
             e.printStackTrace();
             return new ArrayList();
 

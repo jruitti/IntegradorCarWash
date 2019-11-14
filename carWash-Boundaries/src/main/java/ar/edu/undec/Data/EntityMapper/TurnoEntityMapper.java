@@ -1,9 +1,11 @@
 package ar.edu.undec.Data.EntityMapper;
 
 import ar.edu.undec.Data.ModeloEntity.TurnoEntity;
+import excepciones.ClienteIncompletoException;
 import excepciones.EmpleadoIncompletoException;
 import excepciones.TurnoIncompletoException;
 import excepciones.VehiculoIncompletoException;
+import modelo.Cliente;
 import modelo.Empleado;
 import modelo.Turno;
 import modelo.Vehiculo;
@@ -23,9 +25,11 @@ public class TurnoEntityMapper {
     public Turno mapeoDataCore(TurnoEntity elTurno){
         try{
             return Turno.factoryTurno(elTurno.getIdPedido(), Vehiculo.factoryVehiculo(elTurno.getVehiculo().getIdVehiculo(),
-                        elTurno.getVehiculo().getMatricula(),elTurno.getVehiculo().getMarca(), elTurno.getVehiculo().getModelo(), elTurno.getVehiculo().getCliente()),
+                        elTurno.getVehiculo().getMatricula(),elTurno.getVehiculo().getMarca(), elTurno.getVehiculo().getModelo(),
+                        Cliente.factoryCliente(elTurno.getVehiculo().getCliente().getIdCliente(),elTurno.getVehiculo().getCliente().getNombre(),
+                                elTurno.getVehiculo().getCliente().getDomicilio(), elTurno.getVehiculo().getCliente().getBarrio(), elTurno.getVehiculo().getCliente().getDocumento())),
                         elTurno.getFecha(), Empleado.factoryEmpleado(elTurno.getEncargado().getIdEmpleado(),elTurno.getEncargado().getNombre(),elTurno.getEncargado().getLegajo()), elTurno.getPrecio());
-        }catch (TurnoIncompletoException | VehiculoIncompletoException | EmpleadoIncompletoException e) {
+        }catch (TurnoIncompletoException | VehiculoIncompletoException | EmpleadoIncompletoException | ClienteIncompletoException e) {
             e.printStackTrace();
             return null;
         }
