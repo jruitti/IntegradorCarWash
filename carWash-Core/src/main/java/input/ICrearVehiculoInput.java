@@ -1,4 +1,5 @@
 package input;
+
 import excepciones.VehiculoExisteException;
 import modelo.Vehiculo;
 

@@ -13,7 +13,6 @@ public class VehiculoEntityMapper {
         vehiculoEntity.setMarca(vehiculoCore.getMarca());
         vehiculoEntity.setModelo(vehiculoCore.getModelo());
         vehiculoEntity.setCliente(new ClienteEntityMapper().mapeoCoreData(vehiculoCore.getCliente()));
-
         return vehiculoEntity;
     }
 
