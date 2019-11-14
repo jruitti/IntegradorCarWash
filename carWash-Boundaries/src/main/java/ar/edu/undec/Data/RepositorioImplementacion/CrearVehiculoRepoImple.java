@@ -24,7 +24,7 @@ public class CrearVehiculoRepoImple implements IRepositorioCrearVehiculo {
 
     @Override
     public Vehiculo findByMatricula(String matricula) {
-        Vehiculo elVehiculo = new VehiculoEntityMapper().mapeoDataCore(buscarVehiculoPorMatriculaCRUD.findByMatriculaContains(matricula));
+        Vehiculo elVehiculo = new VehiculoEntityMapper().mapeoDataCore(buscarVehiculoPorMatriculaCRUD.findByMatricula(matricula));
         if(elVehiculo!= null)
             return elVehiculo;
         return null;
