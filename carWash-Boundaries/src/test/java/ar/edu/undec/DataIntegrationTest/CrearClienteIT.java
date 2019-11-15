@@ -27,7 +27,7 @@ public class CrearClienteIT {
     @Test
     public void guardarCliente_ClienteGuardado_devuelveTrue() throws ClienteIncompletoException {
 
-        Cliente elCliente = Cliente.factoryCliente(null, "Bautista", "Davila San roman 124", "B° El Asfalto", "32458305");
+        Cliente elCliente = Cliente.factoryCliente(null, "Bautista", "Davila San roman 124", "B° El Asfalto", "36789987");
         boolean resultado = crearClienteRepoImple.guardar(elCliente);
         assertTrue(resultado);
     }
