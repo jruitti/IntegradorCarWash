@@ -24,7 +24,7 @@ public class ObtenerVehiculoPorMatriculaIT {
 
     @Test
     public void buscarVehiculoPorMatricula_existenVehiculos_DevuelveListado() {
-        List<Vehiculo> losVehiculos = (List<Vehiculo>)
+
     }
 
 }

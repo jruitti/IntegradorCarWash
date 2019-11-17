@@ -1,6 +1,4 @@
 package ar.edu.undec.ServiceIntegrationTest;
-
-
 import ar.edu.undec.Service.Controller.CrearVehiculoController;
 import ar.edu.undec.Service.ModeloService.ClienteDTO;
 import ar.edu.undec.Service.ModeloService.VehiculoDTO;
@@ -26,20 +24,21 @@ public class CrearVehiculoServiceIT {
     ICrearVehiculoInput crearVehiculoInput;
 
     @Test
-    public void crearVehiculo_VehiculoNoExiste_Devuelve200 () throws VehiculoExisteException {
-        ClienteDTO elCliente = new ClienteDTO(null, "Ricardo Bigotzky", "Cordoba 33", "Alta gracia","1212314");
-        VehiculoDTO elVehiculo = new VehiculoDTO(null, "UDQ707","Ford Escort","1995", elCliente);
+    public void crearVehiculo_VehiculoNoExiste_Devuelve200() throws Exception {
+
+        ClienteDTO elCliente = new ClienteDTO(null,"Baista","Davila San Roman","El Asfalto","32458305");
+        VehiculoDTO elVehiculo=new VehiculoDTO(1,"XAD456","Peugeot","2017", elCliente);
         when(crearVehiculoInput.crearVehiculo(any(Vehiculo.class))).thenReturn(true);
         CrearVehiculoController crearVehiculoController = new CrearVehiculoController(crearVehiculoInput);
-        assertEquals(crearVehiculoController.crearVehiculo(elVehiculo).getStatusCodeValue() , HttpStatus.SC_OK);
-    }
+        assertEquals(crearVehiculoController.crearVehiculo(elVehiculo).getStatusCodeValue(),HttpStatus.SC_OK);
 
+    }
     @Test
     public void crearVehiculo_VehiculoExiste_Devuelve412() throws VehiculoExisteException {
-        ClienteDTO elCliente = new ClienteDTO(null, "Ricardo Bigotzky", "Cordoba 33", "Alta gracia","1212314");
-        VehiculoDTO elVehiculo = new VehiculoDTO(null, "UDQ707","Ford Escort","1995", elCliente);
+        ClienteDTO elCliente = new ClienteDTO(null,"Baista","Davila San Roman","El Asfalto","32458305");
+        VehiculoDTO elVehiculo=new VehiculoDTO(1,"XAD456","Peugeot","2017", elCliente);
         when(crearVehiculoInput.crearVehiculo(any(Vehiculo.class))).thenThrow(new VehiculoExisteException("El vehiculo ya existe"));
         CrearVehiculoController crearVehiculoController = new CrearVehiculoController(crearVehiculoInput);
-        assertEquals(crearVehiculoController.crearVehiculo(elVehiculo).getStatusCodeValue() , HttpStatus.SC_PRECONDITION_FAILED);
+        assertEquals(crearVehiculoController.crearVehiculo(elVehiculo).getStatusCodeValue(), HttpStatus.SC_PRECONDITION_FAILED);
     }
 }
