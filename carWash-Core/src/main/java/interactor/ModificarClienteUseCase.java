@@ -11,7 +11,7 @@ public class ModificarClienteUseCase {
     }
 
     public boolean modificarCliente(Cliente clienteDatosNuevo)throws ClienteExisteException {
-        Cliente cliente = modificarClienteRepo.findByDNI(clienteDatosNuevo.getDocumento());
+        Cliente cliente = modificarClienteRepo.findByDocumento(clienteDatosNuevo.getDocumento());
         if(cliente==null){
             return this.modificarClienteRepo.modificarCliente(clienteDatosNuevo);
         }else if(cliente.getIdCliente()!=clienteDatosNuevo.getIdCliente()){
