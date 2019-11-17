@@ -13,11 +13,11 @@ public class VehiculoDTO {
     @JsonProperty
     private String modelo;
     @JsonProperty
-    private Cliente cliente;
+    private ClienteDTO cliente;
 
 
     public VehiculoDTO(@JsonProperty("idVehiculo") Integer idVehiculo, @JsonProperty("matricula") String matricula,
-                       @JsonProperty("marca") String marca, @JsonProperty("modelo") String modelo, @JsonProperty("cliente") Cliente cliente) {
+                       @JsonProperty("marca") String marca, @JsonProperty("modelo") String modelo, @JsonProperty("cliente") ClienteDTO cliente) {
         this.idVehiculo= idVehiculo;
         this.matricula = matricula;
         this.marca = marca;
@@ -57,11 +57,11 @@ public class VehiculoDTO {
         this.modelo = modelo;
     }
 
-    public Cliente getCliente() {
+    public ClienteDTO getCliente() {
         return cliente;
     }
 
-    public void setCliente(Cliente cliente) {
+    public void setCliente(ClienteDTO cliente) {
         this.cliente = cliente;
     }
 }
