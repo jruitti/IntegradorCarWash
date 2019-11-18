@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IModificarEmpleadoCRUD extends CrudRepository<EmpleadoEntity, Integer> {
-    EmpleadoEntity findBYLegajo(Integer legajo);
+    EmpleadoEntity findByLegajo(Integer legajo);
 }

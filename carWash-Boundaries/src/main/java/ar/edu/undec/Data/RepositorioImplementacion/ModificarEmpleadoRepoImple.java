@@ -16,7 +16,7 @@ public class ModificarEmpleadoRepoImple implements IModificarEmpleadoRepo {
 
     @Override
     public Empleado findByLegajo(Integer legajo) {
-        Empleado empleado = new EmpleadoEntityMapper().mapeoDataCore(modificarEmpleadoCRUD.findBYLegajo(legajo));
+        Empleado empleado = new EmpleadoEntityMapper().mapeoDataCore(modificarEmpleadoCRUD.findByLegajo(legajo));
         if(empleado != null){
             return empleado;
         }
