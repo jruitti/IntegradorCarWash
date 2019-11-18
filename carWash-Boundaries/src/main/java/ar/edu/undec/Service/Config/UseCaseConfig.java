@@ -29,6 +29,8 @@ public class UseCaseConfig {
 
     @Autowired
     private IModificarVehiculoRepo imodificarVehiculoRepo;
+    @Autowired
+    private IModificarClienteRepo iModificarClienteRepo;
 
     @Bean
     public CrearVehiculoUseCase crearVehiculoUseCase() { return new CrearVehiculoUseCase(iRepositorioCrearVehiculo);
@@ -55,4 +57,7 @@ public class UseCaseConfig {
 
     @Bean
     public ModificarVehiculoUseCase modificarVehiculoUseCase() {return new ModificarVehiculoUseCase(imodificarVehiculoRepo); }
+    @Bean
+    public ModificarClienteUseCase modificarClienteUseCase(){ return new ModificarClienteUseCase(iModificarClienteRepo);}
+
 }

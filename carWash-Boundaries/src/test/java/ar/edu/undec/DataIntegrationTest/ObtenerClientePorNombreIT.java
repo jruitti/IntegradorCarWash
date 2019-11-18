@@ -26,7 +26,7 @@ public class ObtenerClientePorNombreIT {
 
     @Test
 
-    public void buscarClientePorNombre_existenPilotos_devuelveListado() {
+    public void buscarClientePorNombre_existenCliente_devuelveListado() {
         List<Cliente> losClientes = (List<Cliente>) obtenerClientePorNombreRepoImple.buscarClientePorNombre("Bautista");
         assertEquals(2, losClientes.size());
     }
