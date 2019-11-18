@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlGroup;
 import org.springframework.test.context.junit4.SpringRunner;
+import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
@@ -23,8 +24,9 @@ public class ObtenerVehiculoPorMatriculaIT {
     private ObtenerVehiculoPorMatriculaRepoImple obtenerVehiculoPorMatriculaRepoImple;
 
     @Test
-    public void buscarVehiculoPorMatricula_existenVehiculos_DevuelveListado() {
-
+    public void buscarVehiculoPorMatricula_existenVehiculos_DevuelveVehiculo() {
+        List<Vehiculo> losVehiculos = (List<Vehiculo>) obtenerVehiculoPorMatriculaRepoImple.buscarVehiculoPorMatricula("NRP374");
+        assertEquals("NRP374", losVehiculos.get(0).getMatricula());
     }
 
 }
