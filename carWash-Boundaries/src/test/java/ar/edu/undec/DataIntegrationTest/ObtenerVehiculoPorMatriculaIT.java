@@ -17,6 +17,7 @@ import java.util.List;
 @SpringBootTest
 @SqlGroup({
         @Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = "classpath:ObtenerVehiculoPorMatriculaAntes.sql"),
+        //@Sql(executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD, scripts = "classpath:ObtenerVehiculoPorMatriculaDespues.sql")
 })
 
 public class ObtenerVehiculoPorMatriculaIT {
