@@ -1,6 +1,7 @@
 package interactor;
 
 import excepciones.TurnoExisteException;
+import input.IModificarTurnoInput;
 import modelo.Turno;
 import modelo.Vehiculo;
 
@@ -9,7 +10,7 @@ import repositorio.IRepositorioCrearVehiculo;
 
 import java.time.LocalDate;
 
-public class ModificarTurnoUseCase {
+public class ModificarTurnoUseCase implements IModificarTurnoInput {
 
     private IModificarTurnoRepo modificarTurnoRepo;
 
