@@ -9,5 +9,4 @@ import java.util.List;
 @Repository
 public interface IBuscarVehiculoPorMatriculaCRUD extends CrudRepository<VehiculoEntity, Integer> {
     List<VehiculoEntity> findByMatriculaContains(String matricula);
-    VehiculoEntity findByMatricula(String matricula);
 }

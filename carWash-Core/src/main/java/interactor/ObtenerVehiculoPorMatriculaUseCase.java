@@ -12,6 +12,7 @@ public class ObtenerVehiculoPorMatriculaUseCase implements IObtenerVehiculoPorMa
         this.obtenerVehiculoPorMatriculaRepo=obtenerVehiculoPorMatriculaRepo;
     }
 
+    @Override
     public List<Vehiculo> buscarVehiculoPorMatricula(String matricula) {
         return (List<Vehiculo>) obtenerVehiculoPorMatriculaRepo.buscarVehiculoPorMatricula(matricula);
     }

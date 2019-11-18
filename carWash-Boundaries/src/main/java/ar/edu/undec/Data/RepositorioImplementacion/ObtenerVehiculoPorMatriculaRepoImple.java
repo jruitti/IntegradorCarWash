@@ -17,6 +17,7 @@ public class ObtenerVehiculoPorMatriculaRepoImple implements IObtenerVehiculoPor
     @Autowired
     IBuscarVehiculoPorMatriculaCRUD iBuscarVehiculoPorMatriculaCRUD;
 
+    @Override
     public Collection<Vehiculo> buscarVehiculoPorMatricula(String matricula){
         List<Vehiculo> vehiculosBuscados = new ArrayList<>();
         for(VehiculoEntity elVehiculo : iBuscarVehiculoPorMatriculaCRUD.findByMatriculaContains(matricula)) {
