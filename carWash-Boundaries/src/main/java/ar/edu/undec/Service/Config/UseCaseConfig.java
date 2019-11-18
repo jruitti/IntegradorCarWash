@@ -20,6 +20,10 @@ public class UseCaseConfig {
 
     @Autowired
     private IRepositorioCrearEmpleado iRepositorioCrearEmpleado;
+
+    @Autowired
+    private IRepositorioCrearTurno iRepositorioCrearTurno;
+
     @Autowired
     private IBuscarClientePorNombreRepo iBuscarClientePorNombreRepo;
 
@@ -34,6 +38,9 @@ public class UseCaseConfig {
 
         return new ObtenerVehiculoPorMatriculaUseCase(iObtenerVehiculoPorMatriculaRepo);
     }
+
+    @Bean
+    public CrearTurnoUseCase crearTurnoUseCase() {return new CrearTurnoUseCase(iRepositorioCrearTurno);}
 
     @Bean
     public CrearClienteUseCase crearClienteUseCase() {
