@@ -1,9 +1,10 @@
 package ar.edu.undec.ServiceIntegrationTest;
-/*
+
 import ar.edu.undec.Service.Controller.ObtenerClientePorNombreController;
 import ar.edu.undec.Service.ModeloService.ClienteDTO;
 import input.IBuscarClientePorNombreImput;
 import interactor.BuscarClientesPorNombreUseCase;
+import modelo.Cliente;
 import org.apache.http.HttpStatus;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,6 +18,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyList;
 import static org.mockito.Mockito.when;
 
 @RunWith(SpringRunner.class)
@@ -35,21 +37,20 @@ public class ObtenerClientePorNombreServiceIT {
         losClientes.add(cliente2);
         losClientes.add(cliente3);
 
-        when(buscarClientePorNombreImput.buscarClientePorNombre("Bautista")).thenReturn(losClientes);
+        List<Cliente> elClienteModelo=new ArrayList<>();
+        Cliente bautistaPeña= Cliente.factoryCliente(1,"Bautista", "Davila San roman 124","B° El Asfalto","32458305");
+        Cliente bautistaPerez= Cliente.factoryCliente(2,"Bautista", "Chilecito","Paiman Sur","20897654");
+        Cliente bautistaBarboza= Cliente.factoryCliente(3,"Bautista", "Cordoba","Leandro Alem","45098345");
+        elClienteModelo.add(bautistaPeña);
+        elClienteModelo.add(bautistaPerez);
+        elClienteModelo.add(bautistaBarboza);
+
+        when(buscarClientePorNombreImput.buscarClientePorNombre("Bautista")).thenReturn(elClienteModelo);
         ObtenerClientePorNombreController obtenerClientePorNombreController=new ObtenerClientePorNombreController(buscarClientePorNombreImput);
-        List<ClienteDTO> resultado= obtenerClientePorNombreController.consultarClientePorNombre("Bautista");
-
-        when(buscarClientePorNombreRepo.buscarClientePorNombre("Bautista")).thenReturn(losClientes);
-        BuscarClientesPorNombreUseCase buscarClientePorNombreUseCase = new BuscarClientesPorNombreUseCase(buscarClientePorNombreRepo);
-        List<Cliente> result=buscarClientePorNombreUseCase.buscarClientePorNombre("Bautista");
-        Assertions.assertEquals(3,result.size());
-
+        List<Cliente> resultado= (List<Cliente>) obtenerClientePorNombreController.consultarClientePorNombre("Bautista");
+        //assertEquals(crearClienteController.crearCliente(elCliente).getStatusCodeValue(),HttpStatus.SC_OK);
+        //assertEquals(((List<ClienteDTO>) ((List<ClienteDTO>) obtenerClientePorNombreController.consultarClientePorNombre("Bautista").));
         assertEquals(3,resultado.size());
 
-
-        TipoPilotoDTO elTipoPiloto=new TipoPilotoDTO(null,"Comandante");
-        when(crearTipoPilotoInput.crearTipoPiloto(any(TipoPiloto.class))).thenReturn(true);
-        CrearTipoPilotoController crearTipoPilotoController=new CrearTipoPilotoController(crearTipoPilotoInput);
-        assertEquals(crearTipoPilotoController.crearTipoPiloto(elTipoPiloto).getStatusCodeValue(), HttpStatus.SC_OK);
     }
-}*/
+}
