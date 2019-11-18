@@ -1,11 +1,12 @@
 package interactor;
 
+import input.IObtenerVehiculoPorMatriculaImput;
 import modelo.Vehiculo;
 import repositorio.IObtenerVehiculoPorMatriculaRepo;
 
 import java.util.List;
 
-public class ObtenerVehiculoPorMatriculaUseCase {
+public class ObtenerVehiculoPorMatriculaUseCase implements IObtenerVehiculoPorMatriculaImput {
     private IObtenerVehiculoPorMatriculaRepo obtenerVehiculoPorMatriculaRepo;
     public ObtenerVehiculoPorMatriculaUseCase(IObtenerVehiculoPorMatriculaRepo obtenerVehiculoPorMatriculaRepo) {
         this.obtenerVehiculoPorMatriculaRepo=obtenerVehiculoPorMatriculaRepo;
