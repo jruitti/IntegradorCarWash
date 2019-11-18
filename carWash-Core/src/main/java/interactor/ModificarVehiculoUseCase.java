@@ -1,10 +1,11 @@
 package interactor;
 
 import excepciones.VehiculoExisteException;
+import input.IModificarVehiculoInput;
 import modelo.Vehiculo;
 import repositorio.IModificarVehiculoRepo;
 
-public class ModificarVehiculoUseCase {
+public class ModificarVehiculoUseCase implements IModificarVehiculoInput {
     private  IModificarVehiculoRepo modificarVehiculoRepo;
     public ModificarVehiculoUseCase(IModificarVehiculoRepo modificarVehiculoRepo) {
         this.modificarVehiculoRepo=modificarVehiculoRepo;
