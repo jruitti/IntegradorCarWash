@@ -19,7 +19,7 @@ public class Empleado {
     }
 
     public static Empleado factoryEmpleado(Integer idEmpleado, String nombre, Integer legajo) throws EmpleadoIncompletoException {
-        if(idEmpleado == null || nombre == null || legajo == null){
+        if(nombre == null || legajo == null){
             throw new EmpleadoIncompletoException();
         }
         else {
