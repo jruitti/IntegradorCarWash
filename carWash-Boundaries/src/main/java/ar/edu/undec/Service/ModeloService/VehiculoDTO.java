@@ -1,18 +1,17 @@
 package ar.edu.undec.Service.ModeloService;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import modelo.Cliente;
 
 public class VehiculoDTO {
     @JsonProperty("idVehiculo")
     private Integer idVehiculo;
     @JsonProperty("matricula")
     private String matricula;
-    @JsonProperty
+    @JsonProperty("marca")
     private String marca;
-    @JsonProperty
+    @JsonProperty("modelo")
     private String modelo;
-    @JsonProperty
+    @JsonProperty("cliente")
     private ClienteDTO cliente;
 
 
