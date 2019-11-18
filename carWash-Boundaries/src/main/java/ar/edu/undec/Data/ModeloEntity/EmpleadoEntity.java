@@ -12,10 +12,6 @@ public class EmpleadoEntity {
     private String nombre;
     private Integer legajo;
 
-    @OneToMany(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "turno_id")
-    private Collection<TurnoEntity> turnos;
-
     public EmpleadoEntity(){
 
     }
@@ -44,11 +40,4 @@ public class EmpleadoEntity {
         this.legajo = legajo;
     }
 
-    public Collection<TurnoEntity> getTurnos() {
-        return turnos;
-    }
-
-    public void setTurnos(Collection<TurnoEntity> turnos) {
-        this.turnos = turnos;
-    }
 }
