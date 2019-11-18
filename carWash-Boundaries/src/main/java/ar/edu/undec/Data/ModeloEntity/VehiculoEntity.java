@@ -1,6 +1,5 @@
 package ar.edu.undec.Data.ModeloEntity;
 
-
 import javax.persistence.*;
 
 @Entity(name="vehiculos")
@@ -13,6 +12,10 @@ public class VehiculoEntity {
     private String matricula;
     private String marca;
     private String modelo;
+
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "cliente_id")
+    private ClienteEntity cliente;
 
     public VehiculoEntity(){}
 
@@ -46,5 +49,13 @@ public class VehiculoEntity {
 
     public void setModelo(String modelo) {
         this.modelo = modelo;
+    }
+
+    public ClienteEntity getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(ClienteEntity cliente) {
+        this.cliente = cliente;
     }
 }

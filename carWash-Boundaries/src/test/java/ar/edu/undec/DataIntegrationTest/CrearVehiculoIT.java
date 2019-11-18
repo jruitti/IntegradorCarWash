@@ -1,7 +1,9 @@
 package ar.edu.undec.DataIntegrationTest;
 
 import ar.edu.undec.Data.RepositorioImplementacion.CrearVehiculoRepoImple;
+import excepciones.ClienteIncompletoException;
 import excepciones.VehiculoIncompletoException;
+import modelo.Cliente;
 import modelo.Vehiculo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,8 +21,9 @@ public class CrearVehiculoIT {
     CrearVehiculoRepoImple crearVehiculoRepoImple;
 
     @Test
-    public void guardarVehiculo_VehiculoGuardado_devuelveTrue() throws VehiculoIncompletoException {
-        Vehiculo elVehiculo = Vehiculo.factoryVehiculo(1,"NRP374","Toyota","Etios");
+    public void guardarVehiculo_VehiculoGuardado_devuelveTrue() throws VehiculoIncompletoException, ClienteIncompletoException {
+        Cliente elCliente = Cliente.factoryCliente(1,"Sancho","Panza","Porahi 1","0303456");
+        Vehiculo elVehiculo = Vehiculo.factoryVehiculo(1,"NRP374","Toyota","Etios", elCliente);
         boolean resultado = crearVehiculoRepoImple.guardar(elVehiculo);
         assertTrue(resultado);
     }

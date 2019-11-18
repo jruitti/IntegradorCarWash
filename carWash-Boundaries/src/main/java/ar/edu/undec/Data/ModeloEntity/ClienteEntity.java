@@ -14,12 +14,6 @@ public class ClienteEntity {
     private String barrio;
     private String documento;
 
-
-    @OneToMany(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "vehiculo_id")
-    private Collection<VehiculoEntity> vehiculos;
-
-
     public ClienteEntity(){}
 
     public Integer getIdCliente() {
@@ -62,11 +56,5 @@ public class ClienteEntity {
         this.documento = documento;
     }
 
-    public Collection<VehiculoEntity> getVehiculos() {
-        return vehiculos;
-    }
 
-    public void setVehiculos(Collection<VehiculoEntity> vehiculos) {
-        this.vehiculos = vehiculos;
-    }
 }

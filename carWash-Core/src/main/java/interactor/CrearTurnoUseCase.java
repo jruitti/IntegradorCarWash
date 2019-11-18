@@ -1,19 +1,16 @@
 package interactor;
 
 import excepciones.TurnoExisteException;
+import input.ICrearTurnoImput;
 import modelo.Turno;
 import repositorio.IRepositorioCrearTurno;
 import repositorio.IRepositorioCrearVehiculo;
 
-public class CrearTurnoUseCase {
+public class CrearTurnoUseCase implements ICrearTurnoImput {
     private IRepositorioCrearTurno crearTurnoGateway;
-    private IRepositorioCrearVehiculo repositorioCrearVehiculo;
 
-    public CrearTurnoUseCase(IRepositorioCrearTurno crearTurnoGateway,IRepositorioCrearVehiculo repositorioCrearVehiculo) {
+    public CrearTurnoUseCase(IRepositorioCrearTurno crearTurnoGateway) {
         this.crearTurnoGateway=crearTurnoGateway;
-        this.repositorioCrearVehiculo=repositorioCrearVehiculo;
-
-
     }
 
     public boolean crearTurno(Turno turnoNuevo) throws TurnoExisteException {

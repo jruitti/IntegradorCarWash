@@ -1,10 +1,11 @@
 package interactor;
 
 import excepciones.EmpleadoExisteException;
+import input.ICrearEmpleadoInput;
 import modelo.Empleado;
 import repositorio.IRepositorioCrearEmpleado;
 
-public class CrearEmpleadoUseCase {
+public class CrearEmpleadoUseCase implements ICrearEmpleadoInput {
 
     private IRepositorioCrearEmpleado crearEmpleadoRepo;
     public CrearEmpleadoUseCase(IRepositorioCrearEmpleado crearEmpleadoRepo) {

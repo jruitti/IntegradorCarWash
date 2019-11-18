@@ -1,8 +1,10 @@
 package interactorUnitTest;
 
+import excepciones.ClienteIncompletoException;
 import excepciones.VehiculoIncompletoException;
 import interactor.ObtenerVehiculoPorMatriculaUseCase;
 import mockito.MockitoExtension;
+import modelo.Cliente;
 import modelo.Vehiculo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -27,12 +29,13 @@ public class ObtenerVehiculoPorMatriculaUnitTest {
     private List<Vehiculo> factoryListVehiculos() {
         try {
             List<Vehiculo> losVehiculos = new ArrayList<>();
-            Vehiculo vehiculoNuevo1 =  Vehiculo.factoryVehiculo(1,"IXI056","Toyota","2019");
-            Vehiculo vehiculoNuevo2 =  Vehiculo.factoryVehiculo(2,"ADF987","ford","2019");
+            Cliente clienteNuevo = Cliente.factoryCliente(1,"Pepe","Porahi 333", "Los guapos","0303456");
+            Vehiculo vehiculoNuevo1 =  Vehiculo.factoryVehiculo(1,"IXI056","Toyota","2019", clienteNuevo);
+            Vehiculo vehiculoNuevo2 =  Vehiculo.factoryVehiculo(2,"ADF987","ford","2019", clienteNuevo);
             losVehiculos.add(vehiculoNuevo1);
             losVehiculos.add(vehiculoNuevo2);
             return losVehiculos;
-        } catch (VehiculoIncompletoException e) {
+        } catch (VehiculoIncompletoException | ClienteIncompletoException e) {
             e.printStackTrace();
             return new ArrayList<>();
         }

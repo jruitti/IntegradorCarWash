@@ -3,7 +3,6 @@ package ar.edu.undec.Data.EntityMapper;
 import ar.edu.undec.Data.ModeloEntity.ClienteEntity;
 import excepciones.ClienteIncompletoException;
 import modelo.Cliente;
-import modelo.Vehiculo;
 
 public class ClienteEntityMapper {
 
@@ -14,7 +13,6 @@ public class ClienteEntityMapper {
         clienteEntity.setDomicilio(clienteCore.getDomicilio());
         clienteEntity.setBarrio(clienteCore.getBarrio());
         clienteEntity.setDocumento(clienteCore.getDocumento());
-       // clienteEntity.setVehiculos(new VehiculoEntityMapper().mapeoCoreData(clienteCore.));
         return clienteEntity;
     }
 
@@ -24,7 +22,7 @@ public class ClienteEntityMapper {
                 return Cliente.factoryCliente(elCliente.getIdCliente(),elCliente.getNombre(),elCliente.getDomicilio(),elCliente.getBarrio(),elCliente.getDocumento());
             }
             return null;
-            //falta la exception vehiculo de la coleccion
+
         } catch (ClienteIncompletoException e ) {
             e.printStackTrace();
             return null;

@@ -1,10 +1,11 @@
 package interactor;
 
 import excepciones.VehiculoExisteException;
+import input.ICrearVehiculoInput;
 import modelo.Vehiculo;
 import repositorio.IRepositorioCrearVehiculo;
 
-public class CrearVehiculoUseCase {
+public class CrearVehiculoUseCase implements ICrearVehiculoInput {
     private IRepositorioCrearVehiculo crearVehiculoGateway;
 
     public CrearVehiculoUseCase(IRepositorioCrearVehiculo crearVehiculoGateway) {

@@ -20,7 +20,7 @@ public class Cliente {
         this.domicilio=domicilio;
         this.barrio=barrio;
         this.documento=documento;
-        this.vehiculos= new ArrayList<Vehiculo>();
+
 
     }
 
@@ -74,7 +74,5 @@ public class Cliente {
         this.documento = documento;
     }
 
-    public void setVehiculos(List<Vehiculo> vehiculos) {
-        this.vehiculos = vehiculos;
-    }
+
 }

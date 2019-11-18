@@ -4,3 +4,8 @@
 *.iml
 
 carWash-Core/src/test/java/modelo/VehiculoUnitTest.java
+
+carWash-Core/target/
+
+carWash-Boundaries/src/main/java/ar/edu/undec/Service/ModeloService/ClienteDTO.java___jb_tmp___
+*.class
