@@ -7,7 +7,6 @@ import modelo.Vehiculo;
 import java.util.Collection;
 
 public interface IObtenerTurnoPorClienteYVehiculoRepo {
-    Collection<Cliente> obtenerTurnosPorCLiente(String nombre);
 
-    Collection<Turno> obtenerTurnosPorVehiculo(String matricula);
+    Collection<Turno> obtenerTurnoPorClienteyVehiculo(String documento, String matricula);
 }
