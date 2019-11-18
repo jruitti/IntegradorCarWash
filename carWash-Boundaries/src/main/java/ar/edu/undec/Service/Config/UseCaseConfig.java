@@ -27,17 +27,15 @@ public class UseCaseConfig {
     @Autowired
     private IBuscarClientePorNombreRepo iBuscarClientePorNombreRepo;
 
-    @Bean
-    public CrearVehiculoUseCase crearVehiculoUseCase() {
+    @Autowired
+    private IModificarVehiculoRepo imodificarVehiculoRepo;
 
-        return new CrearVehiculoUseCase(iRepositorioCrearVehiculo);
+    @Bean
+    public CrearVehiculoUseCase crearVehiculoUseCase() { return new CrearVehiculoUseCase(iRepositorioCrearVehiculo);
     }
 
     @Bean
-    public ObtenerVehiculoPorMatriculaUseCase obtenerVehiculoPorMatriculaUseCase() {
-
-        return new ObtenerVehiculoPorMatriculaUseCase(iObtenerVehiculoPorMatriculaRepo);
-    }
+    public ObtenerVehiculoPorMatriculaUseCase obtenerVehiculoPorMatriculaUseCase() {return new ObtenerVehiculoPorMatriculaUseCase(iObtenerVehiculoPorMatriculaRepo); }
 
     @Bean
     public CrearTurnoUseCase crearTurnoUseCase() {return new CrearTurnoUseCase(iRepositorioCrearTurno);}
@@ -53,7 +51,8 @@ public class UseCaseConfig {
     }
 
     @Bean
-    public BuscarClientesPorNombreUseCase buscarClientesPorNombreUseCase() {
-        return new BuscarClientesPorNombreUseCase(iBuscarClientePorNombreRepo);
-    }
+    public BuscarClientesPorNombreUseCase buscarClientesPorNombreUseCase() {return new BuscarClientesPorNombreUseCase(iBuscarClientePorNombreRepo); }
+
+    @Bean
+    public ModificarVehiculoUseCase modificarVehiculoUseCase() {return new ModificarVehiculoUseCase(imodificarVehiculoRepo); }
 }
