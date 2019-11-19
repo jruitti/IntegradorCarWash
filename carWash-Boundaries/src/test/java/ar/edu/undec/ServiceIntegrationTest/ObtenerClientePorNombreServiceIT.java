@@ -2,6 +2,8 @@ package ar.edu.undec.ServiceIntegrationTest;
 
 import ar.edu.undec.Service.Controller.ObtenerClientePorNombreController;
 import ar.edu.undec.Service.ModeloService.ClienteDTO;
+import ar.edu.undec.Service.ServiceMapper.ClienteDTOMapper;
+import excepciones.ClienteExisteException;
 import input.IBuscarClientePorNombreImput;
 import interactor.BuscarClientesPorNombreUseCase;
 import modelo.Cliente;
@@ -29,28 +31,27 @@ public class ObtenerClientePorNombreServiceIT {
 
     @Test
     public void obtenerClientePorNombre_ElClientexiste_Devuelve200() throws Exception {
-        List<ClienteDTO> losClientes=new ArrayList<>();
-        ClienteDTO cliente1= new ClienteDTO(null,"Bautista", "Davila San roman 124","B° El Asfalto","32458305");
-        ClienteDTO cliente2= new ClienteDTO(null,"Bautista", "Chilecito","Paiman Sur","20897654");
-        ClienteDTO cliente3= new ClienteDTO(null,"Lucas", "Cordoba","Leandro Alem","45098345");
-        losClientes.add(cliente1);
-        losClientes.add(cliente2);
-        losClientes.add(cliente3);
-
         List<Cliente> elClienteModelo=new ArrayList<>();
-        Cliente bautistaPeña= Cliente.factoryCliente(1,"Bautista", "Davila San roman 124","B° El Asfalto","32458305");
-        Cliente bautistaPerez= Cliente.factoryCliente(2,"Bautista", "Chilecito","Paiman Sur","20897654");
-        Cliente bautistaBarboza= Cliente.factoryCliente(3,"Bautista", "Cordoba","Leandro Alem","45098345");
-        elClienteModelo.add(bautistaPeña);
-        elClienteModelo.add(bautistaPerez);
-        elClienteModelo.add(bautistaBarboza);
-
+        ClienteDTO cliente1= new ClienteDTO(null,"Bautista", "Chilecito","Paiman Sur","20897654");
+        ClienteDTO cliente2= new ClienteDTO(null,"Lucas", "Cordoba","Leandro Alem","45098345");
+        elClienteModelo.add(new ClienteDTOMapper().mapeoDTOCore(cliente1));
+        elClienteModelo.add(new  ClienteDTOMapper().mapeoDTOCore(cliente2));
         when(buscarClientePorNombreImput.buscarClientePorNombre("Bautista")).thenReturn(elClienteModelo);
         ObtenerClientePorNombreController obtenerClientePorNombreController=new ObtenerClientePorNombreController(buscarClientePorNombreImput);
-        List<Cliente> resultado= (List<Cliente>) obtenerClientePorNombreController.consultarClientePorNombre("Bautista");
-        //assertEquals(crearClienteController.crearCliente(elCliente).getStatusCodeValue(),HttpStatus.SC_OK);
-        //assertEquals(((List<ClienteDTO>) ((List<ClienteDTO>) obtenerClientePorNombreController.consultarClientePorNombre("Bautista").));
-        assertEquals(3,resultado.size());
-
+        assertEquals(obtenerClientePorNombreController.consultarClientePorNombre("Bautista").getStatusCodeValue(),HttpStatus.SC_OK);
     }
+    @Test
+    public void obtenerClientePorNombre_ElClientnoExiste_Devuelve204() throws ClienteExisteException {
+        List<Cliente> elClienteModelo=new ArrayList<>();
+        ClienteDTO cliente1= new ClienteDTO(null,"Bautista", "Chilecito","Paiman Sur","20897654");
+        ClienteDTO cliente2= new ClienteDTO(null,"Lucas", "Cordoba","Leandro Alem","45098345");
+        elClienteModelo.add(new ClienteDTOMapper().mapeoDTOCore(cliente1));
+        elClienteModelo.add(new  ClienteDTOMapper().mapeoDTOCore(cliente2));
+
+        when(buscarClientePorNombreImput.buscarClientePorNombre("Pedro")).thenReturn(elClienteModelo);
+        ObtenerClientePorNombreController obtenerClientePorNombreController=new ObtenerClientePorNombreController(buscarClientePorNombreImput);
+        assertEquals(obtenerClientePorNombreController.consultarClientePorNombre("Bautista").getStatusCodeValue(),HttpStatus.SC_NO_CONTENT);
+    }
+
+
 }

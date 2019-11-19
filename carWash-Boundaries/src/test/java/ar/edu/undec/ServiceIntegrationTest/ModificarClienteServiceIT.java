@@ -19,7 +19,6 @@ import static org.mockito.Mockito.when;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ModificarClienteServiceIT {
- ClienteDTO elCliente = new ClienteDTO(null,"Baista","Davila San Roman","El Asfalto","32458305");
     @Mock
     IModificarClienteInput modificarClienteInput;
 
@@ -28,12 +27,12 @@ public class ModificarClienteServiceIT {
         ClienteDTO elClienteAModificar = new ClienteDTO(null,"Baista","Davila San Roman","El Asfalto","32458305");
         when(modificarClienteInput.modificarCliente(any(Cliente.class))).thenReturn(true);
         ModificarClienteController modificarClienteController = new ModificarClienteController(modificarClienteInput);
-        assertEquals(modificarClienteController.modificarCliente(elClienteAModificar).getStatusCodeValue(), org.apache.http.HttpStatus.SC_OK);
+        assertEquals(modificarClienteController.modificarCliente(elClienteAModificar).getStatusCodeValue(), HttpStatus.SC_OK);
 
     }
     @Test
     public void modificarCliente_ClienteModificado_DevuelveFalseError412() throws ClienteExisteException {
-        ClienteDTO elClienteAModificar = new ClienteDTO(null,"Baista","Davila San Roman","El Asfalto","32458305");
+        ClienteDTO elClienteAModificar = new ClienteDTO(1,"Baista","Davila San Roman","El Asfalto","32458305");
         when(modificarClienteInput.modificarCliente(any(Cliente.class))).thenThrow(new ClienteExisteException("Error Al Modificar El cliente"));
         ModificarClienteController modificarClienteController = new ModificarClienteController(modificarClienteInput);
         assertEquals(modificarClienteController.modificarCliente(elClienteAModificar).getStatusCodeValue(), HttpStatus.SC_PRECONDITION_FAILED);

@@ -25,10 +25,8 @@ public class ModificarClienteController {
         try {
             boolean resultado = this.modificarClienteInput.modificarCliente(new ClienteDTOMapper().mapeoDTOCore(elClienteAModificar));
             if (resultado)  return ResponseEntity.status(HttpStatus.OK).body(true);
-                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         } catch (ClienteExisteException e) {
-            e.printStackTrace();
                return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).body(false);
         }
 

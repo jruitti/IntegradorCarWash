@@ -27,7 +27,6 @@ public class ModificarTurnoController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 
         } catch (TurnoExisteException e) {
-            e.printStackTrace();
             return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).body(false);
         }
     }
