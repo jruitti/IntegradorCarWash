@@ -23,7 +23,7 @@ public class VehiculoEntity {
         return idVehiculo;
     }
 
-    public void setIdVehiculo(Integer idVehiculo) {
+    public void setIdVehiculo(int idVehiculo) {
         this.idVehiculo = idVehiculo;
     }
 

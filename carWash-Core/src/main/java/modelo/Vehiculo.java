@@ -9,7 +9,7 @@ public class Vehiculo {
     private String modelo;
     private Cliente cliente;
 
-    private Vehiculo(Integer idVehiculo, String matricula, String marca, String modelo, Cliente cliente) {
+    private Vehiculo(int idVehiculo, String matricula, String marca, String modelo, Cliente cliente) {
         this.idVehiculo = idVehiculo;
         this.matricula = matricula;
         this.marca = marca;

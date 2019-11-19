@@ -23,7 +23,7 @@ public class ObtenerVehiculoPorMatriculaController {
         this.obtenerVehiculoPorMatriculaImput = obtenerVehiculoPorMatriculaImput;
     }
 
-    @RequestMapping(value = "vehiculo/matricula/{matricula}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "vehiculo/matricula{matricula}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<?> consultarVehiculoPorMatricula(@PathVariable("matricula") String matricula) {
         try{
