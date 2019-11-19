@@ -36,16 +36,23 @@ public class ObtenerClientePorNombreServiceIT {
         ClienteDTO cliente2= new ClienteDTO(null,"Lucas", "Cordoba","Leandro Alem","45098345");
         elClienteModelo.add(new ClienteDTOMapper().mapeoDTOCore(cliente1));
         elClienteModelo.add(new  ClienteDTOMapper().mapeoDTOCore(cliente2));
-        when(buscarClientePorNombreImput.buscarClientePorNombre("Bautista")).thenReturn(elClienteModelo);
+        when(buscarClientePorNombreImput.buscarClientePorNombre(any(String.class))).thenReturn(elClienteModelo);
         ObtenerClientePorNombreController obtenerClientePorNombreController=new ObtenerClientePorNombreController(buscarClientePorNombreImput);
         assertEquals(obtenerClientePorNombreController.consultarClientePorNombre("Bautista").getStatusCodeValue(),HttpStatus.SC_OK);
     }
     @Test
-    public void obtenerClientePorNombre_ElClientnoExiste_Devuelve204() throws ClienteExisteException {
+    public void obtenerClientePorNombre_ElClientnoExiste_Devuelve204() throws Exception {
         List<Cliente> elClienteModelo=new ArrayList<>();
         when(buscarClientePorNombreImput.buscarClientePorNombre(any(String.class))).thenReturn(elClienteModelo);
         ObtenerClientePorNombreController obtenerClientePorNombreController=new ObtenerClientePorNombreController(buscarClientePorNombreImput);
         assertEquals(obtenerClientePorNombreController.consultarClientePorNombre("Bautista").getStatusCodeValue(),HttpStatus.SC_NO_CONTENT);
+    }
+
+    @Test
+    public void obtenerClientePorNombre_ElClientnoExiste_Devuelve500() throws Exception {
+        when(buscarClientePorNombreImput.buscarClientePorNombre(any(String.class))).thenReturn(null);
+        ObtenerClientePorNombreController obtenerClientePorNombreController=new ObtenerClientePorNombreController(buscarClientePorNombreImput);
+        assertEquals(obtenerClientePorNombreController.consultarClientePorNombre("Bautista").getStatusCodeValue(),HttpStatus.SC_INTERNAL_SERVER_ERROR);
     }
 
 
