@@ -43,12 +43,7 @@ public class ObtenerClientePorNombreServiceIT {
     @Test
     public void obtenerClientePorNombre_ElClientnoExiste_Devuelve204() throws ClienteExisteException {
         List<Cliente> elClienteModelo=new ArrayList<>();
-        ClienteDTO cliente1= new ClienteDTO(null,"Bautista", "Chilecito","Paiman Sur","20897654");
-        ClienteDTO cliente2= new ClienteDTO(null,"Lucas", "Cordoba","Leandro Alem","45098345");
-        elClienteModelo.add(new ClienteDTOMapper().mapeoDTOCore(cliente1));
-        elClienteModelo.add(new  ClienteDTOMapper().mapeoDTOCore(cliente2));
-
-        when(buscarClientePorNombreImput.buscarClientePorNombre("Pedro")).thenReturn(elClienteModelo);
+        when(buscarClientePorNombreImput.buscarClientePorNombre(any(String.class))).thenReturn(elClienteModelo);
         ObtenerClientePorNombreController obtenerClientePorNombreController=new ObtenerClientePorNombreController(buscarClientePorNombreImput);
         assertEquals(obtenerClientePorNombreController.consultarClientePorNombre("Bautista").getStatusCodeValue(),HttpStatus.SC_NO_CONTENT);
     }
