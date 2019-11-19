@@ -5,6 +5,7 @@ import ar.edu.undec.Service.ModeloService.EmpleadoDTO;
 import excepciones.EmpleadoExisteException;
 import input.IModificarEmpleadoInput;
 import modelo.Empleado;
+import org.apache.http.HttpStatus;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -29,5 +30,13 @@ public class ModificarEmpleadoServiceIT {
         when(modificarEmpleadoInput.modificarEmpleado(any(Empleado.class))).thenReturn(true);
         ModificarEmpleadoController modificarEmpleadoController = new ModificarEmpleadoController(modificarEmpleadoInput);
         assertEquals(modificarEmpleadoController.modificarEmpleado(empleadoDTO).getStatusCodeValue(),org.apache.http.HttpStatus.SC_OK);
+    }
+
+    @Test
+    public void ModificarEmpleado_EmpleadoNoModificado_DevuelveFalse412() throws EmpleadoExisteException {
+        EmpleadoDTO empleadoDTO = new EmpleadoDTO(null,"juan", 123456);
+        when(modificarEmpleadoInput.modificarEmpleado(any(Empleado.class))).thenThrow(new EmpleadoExisteException("Error al modificar el Empleado"));
+        ModificarEmpleadoController modificarEmpleadoController = new ModificarEmpleadoController(modificarEmpleadoInput);
+        assertEquals(modificarEmpleadoController.modificarEmpleado(empleadoDTO).getStatusCodeValue(), HttpStatus.SC_PRECONDITION_FAILED);
     }
 }

@@ -11,7 +11,7 @@ public class ModificarEmpleadoUseCase implements IModificarEmpleadoInput {
         this.modificarEmpleadoRepo=modificarEmpleadoRepo;
     }
 
-    public Boolean modificarEmpleado(Empleado empleadoNuevo) throws EmpleadoExisteException {
+    public boolean modificarEmpleado(Empleado empleadoNuevo) throws EmpleadoExisteException {
         Empleado legajo=modificarEmpleadoRepo.findByLegajo(empleadoNuevo.getLegajo());
         if(legajo==null){
             return this.modificarEmpleadoRepo.modificarEmpleado(empleadoNuevo);

@@ -4,5 +4,5 @@ import excepciones.EmpleadoExisteException;
 import modelo.Empleado;
 
 public interface IModificarEmpleadoInput {
-    Boolean modificarEmpleado(Empleado empleado) throws EmpleadoExisteException;
+    boolean modificarEmpleado(Empleado empleado) throws EmpleadoExisteException;
 }
