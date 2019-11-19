@@ -22,9 +22,9 @@ public class ObtenerVehiculoPorMatriculaController {
     public ObtenerVehiculoPorMatriculaController(IObtenerVehiculoPorMatriculaImput obtenerVehiculoPorMatriculaImput){
         this.obtenerVehiculoPorMatriculaImput = obtenerVehiculoPorMatriculaImput;
     }
+
     @RequestMapping(value = "vehiculo/matricula{matricula}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-
     public ResponseEntity<?> consultarVehiculoPorMatricula(@PathVariable("matricula") String matricula) {
         try{
             List<VehiculoDTO> vehiculos = new ArrayList<>();
@@ -36,5 +36,4 @@ public class ObtenerVehiculoPorMatriculaController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
 }
