@@ -14,7 +14,7 @@ public class CrearTurnoUseCase implements ICrearTurnoImput {
     }
 
     public boolean crearTurno(Turno turnoNuevo) throws TurnoExisteException {
-        if(this.crearTurnoGateway.findByVehiculoAndFecha(turnoNuevo.getVehiculo().getMatricula(), turnoNuevo.getFecha()) == null) {
+        if(this.crearTurnoGateway.findByVehiculoAndFecha(turnoNuevo.getVehiculo(), turnoNuevo.getFecha()) == null) {
             return this.crearTurnoGateway.guardar(turnoNuevo);
         }else throw new TurnoExisteException("Turno no disponible");
     }

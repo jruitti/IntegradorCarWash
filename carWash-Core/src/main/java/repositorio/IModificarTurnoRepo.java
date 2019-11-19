@@ -7,7 +7,7 @@ import java.time.LocalDate;
 
 public interface IModificarTurnoRepo {
 
-    Turno findByVehiculoAndFecha(String matricula, LocalDate fecha);
+    Turno findByVehiculoAndFecha(Vehiculo vehiculo, LocalDate fecha);
     boolean modificarTurno(Turno turnoDatosNuevo);
 
 }

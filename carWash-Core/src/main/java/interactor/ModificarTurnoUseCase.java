@@ -22,7 +22,7 @@ public class ModificarTurnoUseCase implements IModificarTurnoInput {
     public boolean modificarTurno(Turno turnoDatosNuevo) throws TurnoExisteException {
 
 
-        Turno turnoAModificar=modificarTurnoRepo.findByVehiculoAndFecha(turnoDatosNuevo.getVehiculo().getMatricula(),turnoDatosNuevo.getFecha());
+        Turno turnoAModificar=modificarTurnoRepo.findByVehiculoAndFecha(turnoDatosNuevo.getVehiculo(),turnoDatosNuevo.getFecha());
         if(turnoAModificar==null){
             return this.modificarTurnoRepo.modificarTurno(turnoDatosNuevo);
         }else if(turnoAModificar.getIdPedido()!=turnoDatosNuevo.getIdPedido()){

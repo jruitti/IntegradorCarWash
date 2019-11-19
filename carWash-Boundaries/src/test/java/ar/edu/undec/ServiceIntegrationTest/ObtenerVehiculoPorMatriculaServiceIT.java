@@ -49,7 +49,7 @@ public class ObtenerVehiculoPorMatriculaServiceIT {
     }
 
     @Test
-    public void obtenerVehiculoPorMatricula_vehiculoNoExiste_Devuelve_500() throws Exception {
+    public void obtenerVehiculoPorMatricula_vehiculoNoExiste_Devuelve_500() {
         when(obtenerVehiculoPorMatriculaImput.buscarVehiculoPorMatricula(any(String.class))).thenReturn(null);
         ObtenerVehiculoPorMatriculaController obtenerVehiculoPorMatriculaController = new ObtenerVehiculoPorMatriculaController(obtenerVehiculoPorMatriculaImput);
         assertEquals(HttpStatus.SC_INTERNAL_SERVER_ERROR, obtenerVehiculoPorMatriculaController.consultarVehiculoPorMatricula("SSS111").getStatusCodeValue());

@@ -4,6 +4,7 @@ import ar.edu.undec.Data.EntityMapper.TurnoEntityMapper;
 import ar.edu.undec.Data.ModeloEntity.TurnoEntity;
 import ar.edu.undec.Data.RepositorioCRUD.IModificarTurnoCRUD;
 import modelo.Turno;
+import modelo.Vehiculo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import repositorio.IModificarTurnoRepo;
@@ -23,8 +24,8 @@ public class ModificarTurnoRepoImple implements IModificarTurnoRepo {
     }
 
     @Override
-    public Turno findByVehiculoAndFecha(String matricula, LocalDate fecha) {
-        Turno turno = new TurnoEntityMapper().mapeoDataCore(modificarTurnoCRUD.findByVehiculoAndFecha(matricula,fecha));
+    public Turno findByVehiculoAndFecha(Vehiculo elVehiculo, LocalDate fecha) {
+        Turno turno = new TurnoEntityMapper().mapeoDataCore(modificarTurnoCRUD.findByVehiculoAndFecha(elVehiculo,fecha));
         if(turno!=null){
             return turno;
         }
