@@ -22,7 +22,7 @@ public class ObtenerClientePorNombreController {
     public ObtenerClientePorNombreController( IBuscarClientePorNombreImput buscarClientePorNombreImput){
         this.buscarClientePorNombreImput=buscarClientePorNombreImput;
     }
-    @RequestMapping(value = "cliente/nombre{nombre}",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "cliente/nombre/{nombre}",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
 
     public ResponseEntity<?> consultarClientePorNombre(@PathVariable("nombre") String nombre){
