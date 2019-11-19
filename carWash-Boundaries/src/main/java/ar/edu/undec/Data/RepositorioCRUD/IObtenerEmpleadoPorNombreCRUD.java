@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface IObtenerEmpleadoPorNombreCRUD extends CrudRepository<EmpleadoEntity, Integer> {
-    List<EmpleadoEntity> findByNombreEmpleado(String nombreEmpleado);
+    List<EmpleadoEntity> findByNombreContains(String nombreEmpleado);
 }
