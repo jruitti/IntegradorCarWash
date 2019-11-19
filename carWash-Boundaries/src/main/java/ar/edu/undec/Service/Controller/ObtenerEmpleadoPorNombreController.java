@@ -23,7 +23,7 @@ public class ObtenerEmpleadoPorNombreController {
         this.obtenerEmpleadoPorNombreInput = obtenerEmpleadoPorNombreInput;
     }
 
-    @RequestMapping(value = "empleado/nombre{nombre}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "empleado/nombre/{nombre}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<?> consultarEmpleadoPorNombre(@PathVariable("nombre") String nombre){
         try {
