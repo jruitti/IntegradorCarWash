@@ -16,6 +16,9 @@ public class UseCaseConfig {
     private IObtenerVehiculoPorMatriculaRepo iObtenerVehiculoPorMatriculaRepo;
 
     @Autowired
+    private IObtnerEmpleadoPorNombreRepo obtnerEmpleadoPorNombreRepo;
+
+    @Autowired
     private IRepositorioCrearCliente iRepositorioCrearCliente;
 
     @Autowired
@@ -43,6 +46,9 @@ public class UseCaseConfig {
 
     @Bean
     public ObtenerVehiculoPorMatriculaUseCase obtenerVehiculoPorMatriculaUseCase() {return new ObtenerVehiculoPorMatriculaUseCase(iObtenerVehiculoPorMatriculaRepo); }
+
+    @Bean
+    public ObtenerEmpleadoPorNombreUseCase obtenerEmpleadoPorNombreUseCase(){return new ObtenerEmpleadoPorNombreUseCase(obtnerEmpleadoPorNombreRepo);}
 
     @Bean
     public CrearTurnoUseCase crearTurnoUseCase() {return new CrearTurnoUseCase(iRepositorioCrearTurno);}
