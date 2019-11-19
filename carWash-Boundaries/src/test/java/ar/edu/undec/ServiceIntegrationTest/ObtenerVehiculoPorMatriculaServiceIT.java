@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @RunWith(SpringRunner.class)
@@ -33,7 +34,7 @@ public class ObtenerVehiculoPorMatriculaServiceIT {
         ClienteDTO elCliente = new ClienteDTO(1,"Fred","El sapo 201","El pantano","31001200");
         VehiculoDTO elVehiculo=new VehiculoDTO(1,"VJR222","Ford","1992", elCliente);
         losCarros.add(new VehiculoDTOMapper().mapeoDTOCore(elVehiculo));
-        when(obtenerVehiculoPorMatriculaImput.buscarVehiculoPorMatricula("VJR222")).thenReturn(losCarros);
+        when(obtenerVehiculoPorMatriculaImput.buscarVehiculoPorMatricula(any(String.class))).thenReturn(losCarros);
         ObtenerVehiculoPorMatriculaController obtenerVehiculoPorMatriculaController = new ObtenerVehiculoPorMatriculaController(obtenerVehiculoPorMatriculaImput);
         assertEquals(HttpStatus.SC_OK, obtenerVehiculoPorMatriculaController.consultarVehiculoPorMatricula("VJR222").getStatusCodeValue());
     }
@@ -42,11 +43,18 @@ public class ObtenerVehiculoPorMatriculaServiceIT {
     public void obtenerVehiculoPorMatricula_vehiculoNoExiste_Devuelve_204() {
         List<Vehiculo> losCarros;
         losCarros = obtenerVehiculoPorMatriculaImput.buscarVehiculoPorMatricula("BOB303");
-        when(obtenerVehiculoPorMatriculaImput.buscarVehiculoPorMatricula("BOB303")).thenReturn(losCarros);
+        when(obtenerVehiculoPorMatriculaImput.buscarVehiculoPorMatricula(any(String.class))).thenReturn(losCarros);
         ObtenerVehiculoPorMatriculaController obtenerVehiculoPorMatriculaController = new ObtenerVehiculoPorMatriculaController(obtenerVehiculoPorMatriculaImput);
         assertEquals(HttpStatus.SC_NO_CONTENT, obtenerVehiculoPorMatriculaController.consultarVehiculoPorMatricula("BOB303").getStatusCodeValue());
     }
 
+    @Test
+    public void obtenerVehiculoPorMatricula_vehiculoNoExiste_Devuelve_500() throws Exception {
+        when(obtenerVehiculoPorMatriculaImput.buscarVehiculoPorMatricula(any(String.class))).thenReturn(null);
+        ObtenerVehiculoPorMatriculaController obtenerVehiculoPorMatriculaController = new ObtenerVehiculoPorMatriculaController(obtenerVehiculoPorMatriculaImput);
+        assertEquals(HttpStatus.SC_INTERNAL_SERVER_ERROR, obtenerVehiculoPorMatriculaController.consultarVehiculoPorMatricula("SSS111").getStatusCodeValue());
+
+    }
 
 
 }
