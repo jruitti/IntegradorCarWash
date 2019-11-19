@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @RunWith(SpringRunner.class)
@@ -38,8 +39,15 @@ public class ObtenerEmpleadoPorNombreServiceIT {
     public void ObtenerEmpleadoPorNombre_EmpleadoNoExiste_Devuelve_204(){
         List<Empleado> empleadoList = new ArrayList<>();
         empleadoList = obtenerEmpleadoPorNombreInput.buscarEmpleadoPorNombre("juan");
-        when(obtenerEmpleadoPorNombreInput.buscarEmpleadoPorNombre("juan")).thenReturn(empleadoList);
+        when(obtenerEmpleadoPorNombreInput.buscarEmpleadoPorNombre(any(String.class))).thenReturn(empleadoList);
         ObtenerEmpleadoPorNombreController obtenerEmpleadoPorNombreController = new ObtenerEmpleadoPorNombreController(obtenerEmpleadoPorNombreInput);
         assertEquals(HttpStatus.SC_NO_CONTENT,obtenerEmpleadoPorNombreController.consultarEmpleadoPorNombre("juan").getStatusCodeValue());
+    }
+
+    @Test
+    public void ObtenerEmpleadoPorNombre_EmpleadoNoExiste_Devuelve500(){
+        when(obtenerEmpleadoPorNombreInput.buscarEmpleadoPorNombre(any(String.class))).thenReturn(null);
+        ObtenerEmpleadoPorNombreController obtenerEmpleadoPorNombreController = new ObtenerEmpleadoPorNombreController(obtenerEmpleadoPorNombreInput);
+        assertEquals(HttpStatus.SC_INTERNAL_SERVER_ERROR,obtenerEmpleadoPorNombreController.consultarEmpleadoPorNombre("juan").getStatusCodeValue());
     }
 }

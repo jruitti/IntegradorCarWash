@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class ModificarEmpleadoController {
 
-
+    @Autowired
     private IModificarEmpleadoInput modificarEmpleadoInput;
 
     public ModificarEmpleadoController(IModificarEmpleadoInput iModificarEmpleadoInput){
