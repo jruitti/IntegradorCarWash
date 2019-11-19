@@ -14,8 +14,9 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class ModificarEmpleadoController {
 
-    @Autowired
+
     private IModificarEmpleadoInput modificarEmpleadoInput;
+
     public ModificarEmpleadoController(IModificarEmpleadoInput iModificarEmpleadoInput){
         this.modificarEmpleadoInput = iModificarEmpleadoInput;
     }
@@ -31,7 +32,6 @@ public class ModificarEmpleadoController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
         catch (EmpleadoExisteException e){
-            e.printStackTrace();
             return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).body(false);
         }
     }
