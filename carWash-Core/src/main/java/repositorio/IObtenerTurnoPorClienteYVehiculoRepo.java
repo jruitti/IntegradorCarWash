@@ -8,5 +8,5 @@ import java.util.Collection;
 
 public interface IObtenerTurnoPorClienteYVehiculoRepo {
 
-    Collection<Turno> obtenerTurnoPorClienteyVehiculo(String documento, String matricula);
+    Collection<Turno> obtenerTurnoPorClienteyVehiculo(Cliente cliente,Vehiculo vehiculo);
 }
