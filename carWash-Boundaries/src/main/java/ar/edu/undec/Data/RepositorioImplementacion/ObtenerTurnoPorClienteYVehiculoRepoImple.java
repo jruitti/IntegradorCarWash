@@ -13,12 +13,8 @@ import repositorio.IObtenerTurnoPorClienteYVehiculoRepo;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-<<<<<<< Updated upstream
-/*
-=======
 
 
->>>>>>> Stashed changes
 @Service
 public class ObtenerTurnoPorClienteYVehiculoRepoImple implements IObtenerTurnoPorClienteYVehiculoRepo {
 
@@ -36,10 +32,7 @@ public class ObtenerTurnoPorClienteYVehiculoRepoImple implements IObtenerTurnoPo
         }
         return turnosBuscados;
 
-
     }
 
-
-<<<<<<< Updated upstream
 }*/
 

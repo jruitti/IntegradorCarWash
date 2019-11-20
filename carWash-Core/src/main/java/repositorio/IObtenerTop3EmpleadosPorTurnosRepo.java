@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface IObtenerTop3EmpleadosPorTurnosRepo {
 
-    List<Empleado> findByEmpleadoAndTurno(List<Turno> listaTurnos, List<Empleado> losEmpleados);
+    List<Empleado> obtenerTop3EmpleadosPorTurno();
 }
