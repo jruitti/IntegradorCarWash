@@ -1,5 +1,5 @@
 package ar.edu.undec.Data.RepositorioCRUD;
-
+/*
 import ar.edu.undec.Data.ModeloEntity.ClienteEntity;
 import ar.edu.undec.Data.ModeloEntity.TurnoEntity;
 import ar.edu.undec.Data.ModeloEntity.VehiculoEntity;
@@ -14,4 +14,4 @@ public interface IObtenerTurnoPorClienteYVehiculoCRUD  extends CrudRepository<Tu
 
     List<TurnoEntity> findByClienteAndVehiculo(Cliente cliente,Vehiculo vehiculo);
 
-}
+}*/
