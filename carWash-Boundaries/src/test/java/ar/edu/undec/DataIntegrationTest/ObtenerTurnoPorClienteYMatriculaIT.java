@@ -1,5 +1,5 @@
 package ar.edu.undec.DataIntegrationTest;
-
+/*
 import ar.edu.undec.Data.RepositorioImplementacion.ObtenerTurnoPorClienteYVehiculoRepoImple;
 import excepciones.ClienteIncompletoException;
 import excepciones.VehiculoIncompletoException;
@@ -34,4 +34,9 @@ public class ObtenerTurnoPorClienteYMatriculaIT {
 
     }
 
+<<<<<<< Updated upstream
 }*/
+=======
+}
+*/
+>>>>>>> Stashed changes
