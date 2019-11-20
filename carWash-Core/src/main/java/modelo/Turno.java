@@ -44,4 +44,15 @@ public class Turno {
     public LocalDate getFecha() {
         return fecha;
     }
+
+    @Override
+    public String toString() {
+        return "Turno{" +
+                "idPedido=" + idPedido +
+                ", vehiculo=" + vehiculo +
+                ", fecha=" + fecha +
+                ", encargado=" + encargado +
+                ", precio=" + precio +
+                '}';
+    }
 }

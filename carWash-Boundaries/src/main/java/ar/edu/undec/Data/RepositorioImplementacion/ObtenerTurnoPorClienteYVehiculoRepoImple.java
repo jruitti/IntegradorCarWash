@@ -13,6 +13,7 @@ import repositorio.IObtenerTurnoPorClienteYVehiculoRepo;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+/*
 @Service
 public class ObtenerTurnoPorClienteYVehiculoRepoImple implements IObtenerTurnoPorClienteYVehiculoRepo {
 
@@ -34,4 +35,4 @@ public class ObtenerTurnoPorClienteYVehiculoRepoImple implements IObtenerTurnoPo
     }
 
 
-}
+}*/
