@@ -17,7 +17,4 @@ public interface IObtenerTurnoPorClienteYVehiculoCRUD  extends CrudRepository<Tu
 
 <<<<<<< Updated upstream
 }*/
-=======
-}
-*/
->>>>>>> Stashed changes
+
