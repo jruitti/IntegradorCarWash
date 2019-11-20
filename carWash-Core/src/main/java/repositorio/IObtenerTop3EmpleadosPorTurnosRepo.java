@@ -5,7 +5,7 @@ import modelo.Turno;
 
 import java.util.List;
 
-public interface IObtenerTop3EmpleadosPorTurnos {
+public interface IObtenerTop3EmpleadosPorTurnosRepo {
 
-    List<Empleado> obtenerTop3EmpleadosPorTurnos(List<Turno> listaTurnos);
+    List<Empleado> findByEmpleadoAndTurno(List<Turno> listaTurnos, List<Empleado> losEmpleados);
 }

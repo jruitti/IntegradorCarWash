@@ -4,6 +4,7 @@ import excepciones.ClienteIncompletoException;
 import excepciones.EmpleadoIncompletoException;
 import excepciones.TurnoIncompletoException;
 import excepciones.VehiculoIncompletoException;
+import interactor.ObtenerTop3EmpleadosPorTurnoUseCase;
 import mockito.MockitoExtension;
 import modelo.Cliente;
 import modelo.Empleado;
@@ -18,10 +19,11 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class ObtenerTop3EmpleadosPorTurnos {
+public class ObtenerTop3EmpleadosPorTurnosUnitTestUseCase {
 
     @Mock
     IObtenerTop3EmpleadosPorTurnosRepo obtenerTop3EmpleadosPorTurnosRepo;
@@ -45,7 +47,7 @@ public class ObtenerTop3EmpleadosPorTurnos {
         Vehiculo veh3 = Vehiculo.factoryVehiculo(3,"LXI390","ford","2016", popo);
         Vehiculo veh4 = Vehiculo.factoryVehiculo(5,"SDI210","Peugeot","2017", pipo);
         Vehiculo veh5 = Vehiculo.factoryVehiculo(3,"AAA111","ford","2013", bauta);
-        Vehiculo veh6 = Vehiculo.factoryVehiculo(5,"SBB244","Peugeot","2010", bauto);\
+        Vehiculo veh6 = Vehiculo.factoryVehiculo(5,"SBB244","Peugeot","2010", bauto);
 
         Empleado emp1 = Empleado.factoryEmpleado(1, "javier", 12345678);
         Empleado emp2 = Empleado.factoryEmpleado(2, "Juan", 12345465);
@@ -83,11 +85,13 @@ public class ObtenerTop3EmpleadosPorTurnos {
         losTurnos.add(turno9);
         losTurnos.add(turno10);
 
-        when(obtenerTop3EmpleadosPorTurnosRepo.findByEmpleadoAndTurno(losTurnos, losEmpleados).thenReturn(losTurnos));
-
+        when(obtenerTop3EmpleadosPorTurnosRepo.findByEmpleadoAndTurno(losTurnos, losEmpleados)).thenReturn(los3Empleados);
+        ObtenerTop3EmpleadosPorTurnoUseCase obtenerTop3EmpleadosPorTurnoUseCase = new ObtenerTop3EmpleadosPorTurnoUseCase(obtenerTop3EmpleadosPorTurnosRepo);
+        assertEquals(3, obtenerTop3EmpleadosPorTurnoUseCase.obtenerTop3EmpleadosPorTurno(losTurnos, losEmpleados).size());
+        assertEquals("javier", obtenerTop3EmpleadosPorTurnoUseCase.obtenerTop3EmpleadosPorTurno(losTurnos, losEmpleados).get(0));
+        assertEquals("Juan", obtenerTop3EmpleadosPorTurnoUseCase.obtenerTop3EmpleadosPorTurno(losTurnos, losEmpleados).get(0));
+        assertEquals("Pedro", obtenerTop3EmpleadosPorTurnoUseCase.obtenerTop3EmpleadosPorTurno(losTurnos, losEmpleados).get(0));
 
     }
-
-    @Test
 
 }
