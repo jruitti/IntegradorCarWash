@@ -1,6 +1,7 @@
 package interactor;
 
 import modelo.Empleado;
+import modelo.Turno;
 import repositorio.IObtenerTop3EmpleadosPorTurnosRepo;
 
 import java.util.List;
