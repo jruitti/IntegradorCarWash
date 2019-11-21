@@ -18,7 +18,7 @@ import static org.junit.Assert.assertEquals;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 
-public class Top3EmpleadosPorTurnoIT {
+public class ObtenerTop3EmpleadosPorTurnoIT {
 
     @Autowired
     ObtenerTop3EmpleadosPorTurnoRepoImple obtenerTop3EmpleadosPorTurnoRepoImple;
