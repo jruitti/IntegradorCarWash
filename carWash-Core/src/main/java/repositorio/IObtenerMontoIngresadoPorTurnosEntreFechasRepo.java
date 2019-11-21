@@ -5,7 +5,7 @@ import modelo.Turno;
 import java.time.LocalDate;
 
 public interface IObtenerMontoIngresadoPorTurnosEntreFechasRepo {
-    Double findByFechaInicioAndFechaFin(LocalDate fechaInicio, LocalDate fechaFina);
+    Double obtenerMonto(LocalDate fechaInicio, LocalDate fechaFina);
 
 
 }

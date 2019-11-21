@@ -36,12 +36,16 @@ public class ObtenerMontoIngresadoPorTurnosEntreFechasUnitTest {
         Turno turnoDos=Turno.factoryTurno(2, Vehiculo.factoryVehiculo(2,"GFH987","Toyota","2019", lucas), LocalDate.of(2019, 11, 11), Empleado.factoryEmpleado(2,"Luis",235),350);
         Turno turnoTres=Turno.factoryTurno(3, Vehiculo.factoryVehiculo(3,"ADS208","Renult","2010", daniel), LocalDate.of(2019, 11, 15), Empleado.factoryEmpleado(2,"Luis",235),450);
         Turno turnoCuatros=Turno.factoryTurno(4, Vehiculo.factoryVehiculo(4,"POI123","Fiat","2018", lucas), LocalDate.of(2019, 11, 20), Empleado.factoryEmpleado(1,"Pedro",234),200);
+        losTurnos.add(turnoUno);
+        losTurnos.add(turnoDos);
+        losTurnos.add(turnoTres);
+        losTurnos.add(turnoCuatros);
 
 
-        when(obtenerMontoIngresadoPorTurnosEntreFechasRepo.findByFechaInicioAndFechaFin(LocalDate.of(2019, 11, 9),LocalDate.of(2019, 11, 20))).thenReturn(1.100);
+        when(obtenerMontoIngresadoPorTurnosEntreFechasRepo.obtenerMonto(LocalDate.of(2019, 11, 9),LocalDate.of(2019, 11, 20))).thenReturn(1.100);
         ObtenerMontoPorTurnoEntreFechasUseCase obtenerMontoPorTurnoEntreFechasUseCase=new ObtenerMontoPorTurnoEntreFechasUseCase(obtenerMontoIngresadoPorTurnosEntreFechasRepo);
         assertEquals(1.100,obtenerMontoPorTurnoEntreFechasUseCase.montoObtenidoEntreFechas(LocalDate.of(2019, 11, 9),LocalDate.of(2019, 11, 20)));
-        System.out.println(losTurnos);
+
     }
 
     @Test
