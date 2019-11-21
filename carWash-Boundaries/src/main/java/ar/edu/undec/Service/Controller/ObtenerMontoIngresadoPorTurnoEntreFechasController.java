@@ -28,10 +28,11 @@ public class ObtenerMontoIngresadoPorTurnoEntreFechasController {
         try {
             Double monto=obtenerMontoIngresadoPorTurnoEntreFechasInpu.montoObtenidoEntreFechas(fechaInicio,fechaFin);
             if(monto<0){
-                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-            }else return ResponseEntity.status(HttpStatus.OK).body(monto);
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }else return ResponseEntity.status(HttpStatus.OK).body(true);
+
         } catch (FechaIncorrectaException e) {
-            return ResponseEntity.status(HttpStatus.PRECONDITION_FAILED).body(0);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(false);
         }
     }
 }

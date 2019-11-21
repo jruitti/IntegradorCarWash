@@ -15,6 +15,7 @@ import modelo.Cliente;
 import modelo.Turno;
 import modelo.Vehiculo;
 import org.apache.http.HttpStatus;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -34,16 +35,8 @@ import static org.mockito.Mockito.when;
 public class ObtenerTurnoPorClienteServiceIT {
     @Mock
     IObtenerTurnoPorClienteYVehiculoInput obtenerTurnoPorClienteYVehiculoInput;
-/*
-    private List<TurnoDTO>turnos=new ArrayList<>();
-    private List<Turno> facoryListTurno(List<TurnoDTO> turnos)throws TurnoIncompletoException{
-        List<Turno>resultado =new ArrayList<>();
-        for(TurnoDTO turno:turnos){
-            resultado.add(new TurnoDTOMapper().mapeoDTOCore(turno));
-        }
-        return resultado;
-    }
-*/
+
+    @Test
     public void obtenerTurnoPorClienteYVehiculo_devuelveOK_200() throws Exception{
         List<Turno>turnos=new ArrayList<>();
         ClienteDTO elCliente = new ClienteDTO(1,"Baista","Davila San Roman","El Asfalto","32458305");
@@ -51,11 +44,41 @@ public class ObtenerTurnoPorClienteServiceIT {
         EmpleadoDTO empleadoDTO= new EmpleadoDTO(1,"Luis",2345);
         TurnoDTO turno = new TurnoDTO(1,elVehiculo, LocalDate.of(2019,11,13),empleadoDTO,345);
         turnos.add(new TurnoDTOMapper().mapeoDTOCore(turno));
-        when(obtenerTurnoPorClienteYVehiculoInput.obtenerturnoPorClienteYVehiculo(new ClienteDTOMapper().mapeoDTOCore(elCliente),new VehiculoDTOMapper().mapeoDTOCore(elVehiculo))).thenReturn(turnos);
+        when(obtenerTurnoPorClienteYVehiculoInput.obtenerturnoPorClienteYVehiculo(any(Cliente.class),any(Vehiculo.class))).thenReturn(turnos);
         ObtenerTurnoPorClienteYVehiculoController obtenerTurnoPorClienteYVehiculoController= new ObtenerTurnoPorClienteYVehiculoController(obtenerTurnoPorClienteYVehiculoInput);
-        assertEquals(obtenerTurnoPorClienteYVehiculoController.obtenerTurnos(elCliente,elVehiculo).getStatusCodeValue(), org.apache.http.HttpStatus.SC_OK);
-
-
+        assertEquals(obtenerTurnoPorClienteYVehiculoController.obtenerTurnos(elCliente,elVehiculo).getStatusCodeValue(), HttpStatus.SC_OK);
 
     }
+    @Test
+    public void obtenerTurnoPorClienteYVehiculo_Turno_NoSeEncuentra_vuelveError_204() throws Exception{
+        List<Turno>turnos=new ArrayList<>();
+        ClienteDTO elCliente = new ClienteDTO(1,"Baista","Davila San Roman","El Asfalto","32458305");
+        VehiculoDTO elVehiculo=new VehiculoDTO(1,"XAD456","Peugeot","2017", elCliente);
+        EmpleadoDTO empleadoDTO= new EmpleadoDTO(1,"Luis",2345);
+        TurnoDTO turno = new TurnoDTO(1,elVehiculo, LocalDate.of(2019,11,13),empleadoDTO,345);
+
+        when(obtenerTurnoPorClienteYVehiculoInput.obtenerturnoPorClienteYVehiculo(any(Cliente.class),any(Vehiculo.class))).thenReturn(turnos);
+        ObtenerTurnoPorClienteYVehiculoController obtenerTurnoPorClienteYVehiculoController= new ObtenerTurnoPorClienteYVehiculoController(obtenerTurnoPorClienteYVehiculoInput);
+        assertEquals(obtenerTurnoPorClienteYVehiculoController.obtenerTurnos(elCliente,elVehiculo).getStatusCodeValue(), HttpStatus.SC_NO_CONTENT);
+
+    }
+
+    @Test
+    public void obtenerTurnoPorClienteYVehiculo_Turno_NoExiste_vuelveError_500() throws Exception{
+        List<Turno>turnos=new ArrayList<>();
+        ClienteDTO elCliente = new ClienteDTO(1,"Baista","Davila San Roman","El Asfalto","32458305");
+        VehiculoDTO elVehiculo=new VehiculoDTO(1,"XAD456","Peugeot","2017", elCliente);
+        EmpleadoDTO empleadoDTO= new EmpleadoDTO(1,"Luis",2345);
+        TurnoDTO turno = new TurnoDTO(1,elVehiculo, LocalDate.of(2019,11,13),empleadoDTO,345);
+
+        when(obtenerTurnoPorClienteYVehiculoInput.obtenerturnoPorClienteYVehiculo(any(Cliente.class),any(Vehiculo.class))).thenReturn(null);
+        ObtenerTurnoPorClienteYVehiculoController obtenerTurnoPorClienteYVehiculoController= new ObtenerTurnoPorClienteYVehiculoController(obtenerTurnoPorClienteYVehiculoInput);
+        assertEquals(obtenerTurnoPorClienteYVehiculoController.obtenerTurnos(elCliente,elVehiculo).getStatusCodeValue(), HttpStatus.SC_INTERNAL_SERVER_ERROR);
+
+    }
+
+
+
+
+
 }

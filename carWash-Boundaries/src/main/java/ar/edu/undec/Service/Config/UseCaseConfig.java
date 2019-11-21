@@ -45,15 +45,11 @@ public class UseCaseConfig {
     @Autowired
     private IObtenerTurnoPorClienteYVehiculoRepo iObtenerTurnoPorClienteYVehiculoRepo;
     @Autowired
-<<<<<<< Updated upstream
     private IObtenerTop3EmpleadosPorTurnosRepo iObtenerTop3EmpleadosPorTurnosRepo;
-=======
-<<<<<<< HEAD
+
+    @Autowired
     private IObtenerMontoIngresadoPorTurnosEntreFechasRepo iObtenerMontoIngresadoPorTurnosEntreFechasRepo;
-=======
-    private IObtenerTop3EmpleadosPorTurnosRepo iObtenerTop3EmpleadosPorTurnosRepo;
->>>>>>> master
->>>>>>> Stashed changes
+
 
     @Bean
     public CrearVehiculoUseCase crearVehiculoUseCase() { return new CrearVehiculoUseCase(iRepositorioCrearVehiculo);
@@ -101,17 +97,12 @@ public class UseCaseConfig {
         return new ObtenerturnoPorClienteYVehiculoUseCase(iObtenerTurnoPorClienteYVehiculoRepo);
     }
     @Bean
-<<<<<<< Updated upstream
-    public ObtenerTop3EmpleadosPorTurnoUseCase obtenerTop3EmpleadosPorTurnoUseCase(){
+    public ObtenerTop3EmpleadosPorTurnoUseCase obtenerTop3EmpleadosPorTurnoUseCase() {
         return new ObtenerTop3EmpleadosPorTurnoUseCase(iObtenerTop3EmpleadosPorTurnosRepo);
-=======
-<<<<<<< HEAD
-    public ObtenerMontoPorTurnoEntreFechasUseCase obtenerMontoPorTurnoEntreFechasUseCase(){
-        return new ObtenerMontoPorTurnoEntreFechasUseCase(iObtenerMontoIngresadoPorTurnosEntreFechasRepo);
-=======
-    public ObtenerTop3EmpleadosPorTurnoUseCase obtenerTop3EmpleadosPorTurnoUseCase(){
-        return new ObtenerTop3EmpleadosPorTurnoUseCase(iObtenerTop3EmpleadosPorTurnosRepo);
->>>>>>> master
->>>>>>> Stashed changes
     }
+    @Bean
+    public ObtenerMontoPorTurnoEntreFechasUseCase obtenerMontoPorTurnoEntreFechasUseCase() {
+            return new ObtenerMontoPorTurnoEntreFechasUseCase(iObtenerMontoIngresadoPorTurnosEntreFechasRepo);
+        }
+
 }
