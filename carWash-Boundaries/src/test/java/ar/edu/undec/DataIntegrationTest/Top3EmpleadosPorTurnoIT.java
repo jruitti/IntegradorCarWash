@@ -27,13 +27,13 @@ public class Top3EmpleadosPorTurnoIT {
     @Test
     @SqlGroup({
             @Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = "classpath:ObtenerTop3EmpleadosPorTurnoAntes.sql"),
-            //@Sql(executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD, scripts = "classpath:ObtenerTop3EmpleadosPorTurnoDespues.sql")
+            @Sql(executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD, scripts = "classpath:ObtenerTop3EmpleadosPorTurnoDespues.sql")
     })
     public void obtenerTop3EmpleadosPorTurno_devuelveListaBien() {
         List<Empleado> los3Empleados = obtenerTop3EmpleadosPorTurnoRepoImple.obtenerTop3EmpleadosPorTurno();
-        assertEquals("pedro", los3Empleados.get(0).getNombre());
+        assertEquals("jose", los3Empleados.get(0).getNombre());
         assertEquals("pedro", los3Empleados.get(1).getNombre());
-        assertEquals("jose", los3Empleados.get(2).getNombre());
+        assertEquals("juan", los3Empleados.get(2).getNombre());
 
     }
 
