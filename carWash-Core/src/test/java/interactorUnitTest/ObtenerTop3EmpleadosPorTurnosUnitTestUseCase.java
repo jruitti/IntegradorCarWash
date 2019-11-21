@@ -33,9 +33,6 @@ public class ObtenerTop3EmpleadosPorTurnosUnitTestUseCase {
     @Spy
     List<Empleado> losEmpleados = new ArrayList<>();
 
-    @Spy
-    List<Turno> losTurnos = new ArrayList<>();
-
     @Test
     public void obtenerTop3EmpleadosConMasTurnos_devuelveBien() throws EmpleadoIncompletoException, ClienteIncompletoException, VehiculoIncompletoException, TurnoIncompletoException {
 
@@ -49,8 +46,7 @@ public class ObtenerTop3EmpleadosPorTurnosUnitTestUseCase {
         when(iObtenerTop3EmpleadosPorTurnosRepo.obtenerTop3EmpleadosPorTurno()).thenReturn(losEmpleados);
         ObtenerTop3EmpleadosPorTurnoUseCase obtenerTop3EmpleadosPorTurnoUseCase = new ObtenerTop3EmpleadosPorTurnoUseCase(iObtenerTop3EmpleadosPorTurnosRepo);
         List<Empleado> top3Empleados = obtenerTop3EmpleadosPorTurnoUseCase.obtenerTop3EmpleadosPorTurno();
-        assertEquals(3, top3Empleados.size());
-
+        assertEquals(3,top3Empleados.size());
     }
 
 }
