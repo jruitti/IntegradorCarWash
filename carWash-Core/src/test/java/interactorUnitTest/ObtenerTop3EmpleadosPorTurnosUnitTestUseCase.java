@@ -33,8 +33,11 @@ public class ObtenerTop3EmpleadosPorTurnosUnitTestUseCase {
     @Spy
     List<Empleado> losEmpleados = new ArrayList<>();
 
+    @Spy
+    List<Turno> losTurnos = new ArrayList<>();
+
     @Test
-    public void obtenerTop3EmpleadosConMasTurnos_devuelveBien() throws ClienteIncompletoException, VehiculoIncompletoException, EmpleadoIncompletoException, TurnoIncompletoException {
+    public void obtenerTop3EmpleadosConMasTurnos_devuelveBien() throws EmpleadoIncompletoException, ClienteIncompletoException, VehiculoIncompletoException, TurnoIncompletoException {
 
         Empleado emp1 = Empleado.factoryEmpleado(1, "javier", 12345678);
         Empleado emp2 = Empleado.factoryEmpleado(2, "Juan", 12345465);
