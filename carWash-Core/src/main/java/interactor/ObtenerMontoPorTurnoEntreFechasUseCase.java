@@ -14,7 +14,7 @@ public class ObtenerMontoPorTurnoEntreFechasUseCase {
 
     public Double montoObtenidoEntreFechas(LocalDate fechaInicio, LocalDate fechaFin) throws FechaIncorrectaException {
         if(fechaInicio.isBefore(fechaFin)){
-            return obtenerMontoIngresadoPorTurnosEntreFechasRepo.findByFechaInicioAndFechaFin(fechaInicio,fechaFin);
+            return obtenerMontoIngresadoPorTurnosEntreFechasRepo.obtenerMonto(fechaInicio,fechaFin);
         }else throw new FechaIncorrectaException("la FechaInicio no debe ser posterior a la fechaFin");
     }
 }

@@ -1,5 +1,6 @@
 package interactor;
 
+import input.IObtenerTurnoPorClienteYVehiculoInput;
 import modelo.Cliente;
 import modelo.Turno;
 import modelo.Vehiculo;
@@ -7,7 +8,7 @@ import repositorio.IObtenerTurnoPorClienteYVehiculoRepo;
 
 import java.util.List;
 
-public class ObtenerturnoPorClienteYVehiculoUseCase {
+public class ObtenerturnoPorClienteYVehiculoUseCase implements IObtenerTurnoPorClienteYVehiculoInput {
 
     private IObtenerTurnoPorClienteYVehiculoRepo obtenerTurnoPorClienteYVehiculoRepo;
 

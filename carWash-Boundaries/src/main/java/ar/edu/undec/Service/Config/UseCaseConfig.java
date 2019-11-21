@@ -42,6 +42,8 @@ public class UseCaseConfig {
 
     @Autowired
     private IModificarEmpleadoRepo modificarEmpleadoRepo;
+    @Autowired
+    private IObtenerTurnoPorClienteYVehiculoRepo iObtenerTurnoPorClienteYVehiculoRepo;
 
     @Bean
     public CrearVehiculoUseCase crearVehiculoUseCase() { return new CrearVehiculoUseCase(iRepositorioCrearVehiculo);
@@ -83,5 +85,9 @@ public class UseCaseConfig {
     @Bean
     public ModificarEmpleadoUseCase modificarEmpleadoUseCase(){
         return new ModificarEmpleadoUseCase(modificarEmpleadoRepo);
+    }
+    @Bean
+    public ObtenerturnoPorClienteYVehiculoUseCase obtenerturnoPorClienteYVehiculoUseCase(){
+        return new ObtenerturnoPorClienteYVehiculoUseCase(iObtenerTurnoPorClienteYVehiculoRepo);
     }
 }
