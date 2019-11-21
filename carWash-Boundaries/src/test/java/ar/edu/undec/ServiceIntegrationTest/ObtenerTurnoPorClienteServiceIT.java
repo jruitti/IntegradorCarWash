@@ -34,7 +34,7 @@ import static org.mockito.Mockito.when;
 public class ObtenerTurnoPorClienteServiceIT {
     @Mock
     IObtenerTurnoPorClienteYVehiculoInput obtenerTurnoPorClienteYVehiculoInput;
-
+/*
     private List<TurnoDTO>turnos=new ArrayList<>();
     private List<Turno> facoryListTurno(List<TurnoDTO> turnos)throws TurnoIncompletoException{
         List<Turno>resultado =new ArrayList<>();
@@ -43,15 +43,15 @@ public class ObtenerTurnoPorClienteServiceIT {
         }
         return resultado;
     }
-
+*/
     public void obtenerTurnoPorClienteYVehiculo_devuelveOK_200() throws Exception{
-        //List<Turno>turnos=new ArrayList<>();
+        List<Turno>turnos=new ArrayList<>();
         ClienteDTO elCliente = new ClienteDTO(1,"Baista","Davila San Roman","El Asfalto","32458305");
         VehiculoDTO elVehiculo=new VehiculoDTO(1,"XAD456","Peugeot","2017", elCliente);
         EmpleadoDTO empleadoDTO= new EmpleadoDTO(1,"Luis",2345);
         TurnoDTO turno = new TurnoDTO(1,elVehiculo, LocalDate.of(2019,11,13),empleadoDTO,345);
-        turnos.add(turno);
-        when(obtenerTurnoPorClienteYVehiculoInput.obtenerturnoPorClienteYVehiculo(any(Cliente.class),any(Vehiculo.class))).thenReturn(facoryListTurno(turnos));
+        turnos.add(new TurnoDTOMapper().mapeoDTOCore(turno));
+        when(obtenerTurnoPorClienteYVehiculoInput.obtenerturnoPorClienteYVehiculo(new ClienteDTOMapper().mapeoDTOCore(elCliente),new VehiculoDTOMapper().mapeoDTOCore(elVehiculo))).thenReturn(turnos);
         ObtenerTurnoPorClienteYVehiculoController obtenerTurnoPorClienteYVehiculoController= new ObtenerTurnoPorClienteYVehiculoController(obtenerTurnoPorClienteYVehiculoInput);
         assertEquals(obtenerTurnoPorClienteYVehiculoController.obtenerTurnos(elCliente,elVehiculo).getStatusCodeValue(), org.apache.http.HttpStatus.SC_OK);
 
