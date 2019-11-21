@@ -1,11 +1,12 @@
 package interactor;
 
 import excepciones.FechaIncorrectaException;
+import input.IObtenerMontoIngresadoPorTurnoEntreFechasInpu;
 import repositorio.IObtenerMontoIngresadoPorTurnosEntreFechasRepo;
 
 import java.time.LocalDate;
 
-public class ObtenerMontoPorTurnoEntreFechasUseCase {
+public class ObtenerMontoPorTurnoEntreFechasUseCase implements IObtenerMontoIngresadoPorTurnoEntreFechasInpu {
     private IObtenerMontoIngresadoPorTurnosEntreFechasRepo obtenerMontoIngresadoPorTurnosEntreFechasRepo;
 
     public ObtenerMontoPorTurnoEntreFechasUseCase(IObtenerMontoIngresadoPorTurnosEntreFechasRepo obtenerMontoIngresadoPorTurnosEntreFechasRepo) {
