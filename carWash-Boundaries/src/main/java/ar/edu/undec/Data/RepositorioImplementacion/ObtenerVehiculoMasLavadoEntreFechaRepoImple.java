@@ -29,10 +29,6 @@ public class ObtenerVehiculoMasLavadoEntreFechaRepoImple implements IObtenerVehi
     public Vehiculo obtenerVehiculoMasLavadoEntreFecha(LocalDate fechaInicio, LocalDate fechaFin) {
 
         List<TurnoEntity> turnoEntity = iObtenerTurnoPorFechaCRUD.findAllByFechaBetween(fechaInicio, fechaFin);
-        for (TurnoEntity t: turnoEntity) {
-            System.out.println("fechas:"+ t.getFecha());
-        }
-
         List<Integer> indiceVehiculo = new ArrayList<>();
 
         for (TurnoEntity turno: turnoEntity) {
