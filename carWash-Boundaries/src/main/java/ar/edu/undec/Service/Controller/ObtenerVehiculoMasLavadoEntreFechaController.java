@@ -13,15 +13,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
 @RequestMapping("/")
 @RestController
 public class ObtenerVehiculoMasLavadoEntreFechaController {
-    @ModelAttribute
-    LocalDate initLocalDate() {return LocalDate.now();
-    }
 
     @Autowired
     IObtenerVehiculoMasLavadoEntreFechaInput iObtenerVehiculoMasLavadoEntreFechaInput;
@@ -32,11 +30,12 @@ public class ObtenerVehiculoMasLavadoEntreFechaController {
 
     @RequestMapping(value = "vehiculo/fechainicio/{inicio}/fechafin/{fin}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public ResponseEntity<?> ObtenerVehiculoMasLavadoEntreFecha(@DateTimeFormat(pattern="yyyy-MM-dd") @ModelAttribute LocalDate fechaInicio, @ModelAttribute LocalDate fechaFin){
+    public ResponseEntity<?> ObtenerVehiculoMasLavadoEntreFecha(@PathVariable("inicio") String fechaInicio, @PathVariable("fin") String fechaFin){
         try {
-
-            Vehiculo vehiculo = this.iObtenerVehiculoMasLavadoEntreFechaInput.obtenerVehiculoMasLavadoEntreFecha(fechaInicio,fechaFin);
-            if(fechaFin == null || fechaInicio == null){
+            LocalDate inicio = LocalDate.parse(fechaInicio, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+            LocalDate fin = LocalDate.parse(fechaFin, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+            Vehiculo vehiculo = this.iObtenerVehiculoMasLavadoEntreFechaInput.obtenerVehiculoMasLavadoEntreFecha(inicio, fin);
+            if(inicio == null || fin == null){
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
             if (vehiculo == null){

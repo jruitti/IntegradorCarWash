@@ -36,11 +36,10 @@ public class ObtenerVehiculoMasLavadoEntreFechaServiceIT {
 
         ClienteDTO elCliente = new ClienteDTO(1,"Fred","El sapo 201","El pantano","31001200");
         VehiculoDTO elVehiculo=new VehiculoDTO(1,"VJR222","Ford","1992", elCliente);
-
         Vehiculo vehiculo = new VehiculoDTOMapper().mapeoDTOCore(elVehiculo);
         when(obtenerVehiculoMasLavadoEntreFechaInput.obtenerVehiculoMasLavadoEntreFecha(LocalDate.now().minusMonths(1),LocalDate.now())).thenReturn(vehiculo);
         ObtenerVehiculoMasLavadoEntreFechaController obtenerVehiculoMasLavadoEntreFechaController = new ObtenerVehiculoMasLavadoEntreFechaController(obtenerVehiculoMasLavadoEntreFechaInput);
-        assertEquals(HttpStatus.SC_OK, obtenerVehiculoMasLavadoEntreFechaController.ObtenerVehiculoMasLavadoEntreFecha(LocalDate.now().minusMonths(1),LocalDate.now()).getStatusCodeValue());
+        assertEquals(HttpStatus.SC_OK, obtenerVehiculoMasLavadoEntreFechaController.ObtenerVehiculoMasLavadoEntreFecha(LocalDate.now().minusMonths(1).toString(),LocalDate.now().toString()).getStatusCodeValue());
 
     }
 
@@ -50,7 +49,7 @@ public class ObtenerVehiculoMasLavadoEntreFechaServiceIT {
         vehiculo = obtenerVehiculoMasLavadoEntreFechaInput.obtenerVehiculoMasLavadoEntreFecha(LocalDate.now().minusMonths(1),LocalDate.now());
         when(obtenerVehiculoMasLavadoEntreFechaInput.obtenerVehiculoMasLavadoEntreFecha(LocalDate.now().minusMonths(1),LocalDate.now())).thenReturn(vehiculo);
         ObtenerVehiculoMasLavadoEntreFechaController obtenerVehiculoMasLavadoEntreFechaController = new ObtenerVehiculoMasLavadoEntreFechaController(obtenerVehiculoMasLavadoEntreFechaInput);
-        assertEquals(HttpStatus.SC_NO_CONTENT,obtenerVehiculoMasLavadoEntreFechaController.ObtenerVehiculoMasLavadoEntreFecha(LocalDate.now().minusMonths(1),LocalDate.now()).getStatusCodeValue());
+        assertEquals(HttpStatus.SC_NO_CONTENT,obtenerVehiculoMasLavadoEntreFechaController.ObtenerVehiculoMasLavadoEntreFecha(LocalDate.now().minusMonths(1).toString(),LocalDate.now().toString()).getStatusCodeValue());
     }
 
     @Test

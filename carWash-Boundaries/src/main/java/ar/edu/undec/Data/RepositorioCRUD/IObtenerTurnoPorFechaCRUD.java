@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface IObtenerTurnoPorFechaCRUD extends CrudRepository<TurnoEntity,Integer> {
-    List<TurnoEntity> findByFechaBetween(LocalDate fechaInicio, LocalDate fechaFin);
+    List<TurnoEntity> findAllByFechaBetween(LocalDate fechaInicio, LocalDate fechaFin);
 }

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import repositorio.IObtenerVehiculoMasLavadoEntreFechaRepo;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 import static java.util.stream.Collectors.toMap;
@@ -27,7 +28,11 @@ public class ObtenerVehiculoMasLavadoEntreFechaRepoImple implements IObtenerVehi
     @Override
     public Vehiculo obtenerVehiculoMasLavadoEntreFecha(LocalDate fechaInicio, LocalDate fechaFin) {
 
-        List<TurnoEntity> turnoEntity = iObtenerTurnoPorFechaCRUD.findByFechaBetween(fechaInicio,fechaFin);
+        List<TurnoEntity> turnoEntity = iObtenerTurnoPorFechaCRUD.findAllByFechaBetween(fechaInicio, fechaFin);
+        for (TurnoEntity t: turnoEntity) {
+            System.out.println("fechas:"+ t.getFecha());
+        }
+
         List<Integer> indiceVehiculo = new ArrayList<>();
 
         for (TurnoEntity turno: turnoEntity) {
