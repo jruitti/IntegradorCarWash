@@ -1,6 +1,7 @@
 package modelo;
 
 import excepciones.TurnoIncompletoException;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
@@ -11,7 +12,7 @@ public class Turno {
     private Empleado encargado;
     private float precio;
 
-    private Turno(Integer idPedido,Vehiculo vehiculo,LocalDate fecha,Empleado encargado,float precio){
+    private Turno(Integer idPedido, Vehiculo vehiculo, LocalDate fecha, Empleado encargado, float precio){
         this.idPedido=idPedido;
         this.vehiculo=vehiculo;
         this.fecha=fecha;

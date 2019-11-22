@@ -2,6 +2,7 @@ package interactor;
 
 import input.IObtenerVehiculoMasLavadoEntreFechaInput;
 import modelo.Vehiculo;
+import org.springframework.format.annotation.DateTimeFormat;
 import repositorio.IObtenerVehiculoMasLavadoEntreFechaRepo;
 
 import java.time.LocalDate;
@@ -17,6 +18,6 @@ public class ObtenerVehiculoMasLavadoEntreFechaUseCase implements IObtenerVehicu
 
     @Override
     public Vehiculo obtenerVehiculoMasLavadoEntreFecha(LocalDate fechaInicio, LocalDate fechaFin) {
-        return (Vehiculo) obtenerVehiculoMasLavadoEntreFechaRepo.obtenerVehiculoMasLavadoEntreFecha(fechaInicio,fechaFin);
+        return obtenerVehiculoMasLavadoEntreFechaRepo.obtenerVehiculoMasLavadoEntreFecha(fechaInicio,fechaFin);
     }
 }

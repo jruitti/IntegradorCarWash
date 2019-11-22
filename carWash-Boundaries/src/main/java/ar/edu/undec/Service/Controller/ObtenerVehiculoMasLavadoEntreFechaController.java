@@ -6,6 +6,7 @@ import ar.edu.undec.Service.ServiceMapper.TurnoDTOMapper;
 import input.IObtenerVehiculoMasLavadoEntreFechaInput;
 import modelo.Vehiculo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,9 @@ import java.util.List;
 @RequestMapping("/")
 @RestController
 public class ObtenerVehiculoMasLavadoEntreFechaController {
+    @ModelAttribute
+    LocalDate initLocalDate() {return LocalDate.now();
+    }
 
     @Autowired
     IObtenerVehiculoMasLavadoEntreFechaInput iObtenerVehiculoMasLavadoEntreFechaInput;
@@ -28,7 +32,7 @@ public class ObtenerVehiculoMasLavadoEntreFechaController {
 
     @RequestMapping(value = "vehiculo/fechainicio/{inicio}/fechafin/{fin}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public ResponseEntity<?> ObtenerVehiculoMasLavadoEntreFecha( LocalDate fechaInicio,  LocalDate fechaFin){
+    public ResponseEntity<?> ObtenerVehiculoMasLavadoEntreFecha(@DateTimeFormat(pattern="yyyy-MM-dd") @ModelAttribute LocalDate fechaInicio, @ModelAttribute LocalDate fechaFin){
         try {
 
             Vehiculo vehiculo = this.iObtenerVehiculoMasLavadoEntreFechaInput.obtenerVehiculoMasLavadoEntreFecha(fechaInicio,fechaFin);

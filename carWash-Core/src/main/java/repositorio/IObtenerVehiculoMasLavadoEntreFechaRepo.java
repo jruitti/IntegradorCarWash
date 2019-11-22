@@ -1,7 +1,6 @@
 package repositorio;
 
 import modelo.Vehiculo;
-
 import java.time.LocalDate;
 
 
