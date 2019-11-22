@@ -26,7 +26,7 @@ public class ObtenerVehiculoMasLavadoEntreFechaController {
         this.iObtenerVehiculoMasLavadoEntreFechaInput = obtenerVehiculoMasLavadoEntreFechaInput;
     }
 
-    @RequestMapping(value = "vehiculo/fechainicio/fechafin", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "vehiculo/fechainicio/{inicio}/fechafin/{fin}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<?> ObtenerVehiculoMasLavadoEntreFecha( LocalDate fechaInicio,  LocalDate fechaFin){
         try {

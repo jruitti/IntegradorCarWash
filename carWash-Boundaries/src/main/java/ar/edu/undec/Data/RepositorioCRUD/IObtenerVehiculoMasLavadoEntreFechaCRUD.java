@@ -9,5 +9,5 @@ import java.time.LocalDate;
 
 @Repository
 public interface IObtenerVehiculoMasLavadoEntreFechaCRUD extends CrudRepository<VehiculoEntity, Integer> {
-    VehiculoEntity findByMatricula(String matricula);
+    VehiculoEntity findByIdVehiculo(Integer idVehiculo);
 }
