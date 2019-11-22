@@ -44,9 +44,9 @@ public class ObtenerTurnoPorClienteServiceIT {
         EmpleadoDTO empleadoDTO= new EmpleadoDTO(1,"Luis",2345);
         TurnoDTO turno = new TurnoDTO(1,elVehiculo, LocalDate.of(2019,11,13),empleadoDTO,345);
         turnos.add(new TurnoDTOMapper().mapeoDTOCore(turno));
-        when(obtenerTurnoPorClienteYVehiculoInput.obtenerturnoPorClienteYVehiculo(any(Cliente.class),any(Vehiculo.class))).thenReturn(turnos);
+        when(obtenerTurnoPorClienteYVehiculoInput.obtenerturnoPorClienteYVehiculo(any(String.class),any(String.class))).thenReturn(turnos);
         ObtenerTurnoPorClienteYVehiculoController obtenerTurnoPorClienteYVehiculoController= new ObtenerTurnoPorClienteYVehiculoController(obtenerTurnoPorClienteYVehiculoInput);
-        assertEquals(obtenerTurnoPorClienteYVehiculoController.obtenerTurnos(elCliente,elVehiculo).getStatusCodeValue(), HttpStatus.SC_OK);
+        assertEquals(obtenerTurnoPorClienteYVehiculoController.obtenerTurnos(elCliente.getDocumento(),elVehiculo.getMatricula()).getStatusCodeValue(), HttpStatus.SC_OK);
 
     }
     @Test
@@ -57,9 +57,9 @@ public class ObtenerTurnoPorClienteServiceIT {
         EmpleadoDTO empleadoDTO= new EmpleadoDTO(1,"Luis",2345);
         TurnoDTO turno = new TurnoDTO(1,elVehiculo, LocalDate.of(2019,11,13),empleadoDTO,345);
 
-        when(obtenerTurnoPorClienteYVehiculoInput.obtenerturnoPorClienteYVehiculo(any(Cliente.class),any(Vehiculo.class))).thenReturn(turnos);
+        when(obtenerTurnoPorClienteYVehiculoInput.obtenerturnoPorClienteYVehiculo(any(String.class),any(String.class))).thenReturn(turnos);
         ObtenerTurnoPorClienteYVehiculoController obtenerTurnoPorClienteYVehiculoController= new ObtenerTurnoPorClienteYVehiculoController(obtenerTurnoPorClienteYVehiculoInput);
-        assertEquals(obtenerTurnoPorClienteYVehiculoController.obtenerTurnos(elCliente,elVehiculo).getStatusCodeValue(), HttpStatus.SC_NO_CONTENT);
+        assertEquals(obtenerTurnoPorClienteYVehiculoController.obtenerTurnos(elCliente.getDocumento(),elVehiculo.getMatricula()).getStatusCodeValue(), HttpStatus.SC_NO_CONTENT);
 
     }
 
@@ -71,9 +71,9 @@ public class ObtenerTurnoPorClienteServiceIT {
         EmpleadoDTO empleadoDTO= new EmpleadoDTO(1,"Luis",2345);
         TurnoDTO turno = new TurnoDTO(1,elVehiculo, LocalDate.of(2019,11,13),empleadoDTO,345);
 
-        when(obtenerTurnoPorClienteYVehiculoInput.obtenerturnoPorClienteYVehiculo(any(Cliente.class),any(Vehiculo.class))).thenReturn(null);
+        when(obtenerTurnoPorClienteYVehiculoInput.obtenerturnoPorClienteYVehiculo(any(String.class),any(String.class))).thenReturn(null);
         ObtenerTurnoPorClienteYVehiculoController obtenerTurnoPorClienteYVehiculoController= new ObtenerTurnoPorClienteYVehiculoController(obtenerTurnoPorClienteYVehiculoInput);
-        assertEquals(obtenerTurnoPorClienteYVehiculoController.obtenerTurnos(elCliente,elVehiculo).getStatusCodeValue(), HttpStatus.SC_INTERNAL_SERVER_ERROR);
+        assertEquals(obtenerTurnoPorClienteYVehiculoController.obtenerTurnos(elCliente.getDocumento(),elVehiculo.getMatricula()).getStatusCodeValue(), HttpStatus.SC_INTERNAL_SERVER_ERROR);
 
     }
 

@@ -16,7 +16,7 @@ public class ObtenerturnoPorClienteYVehiculoUseCase implements IObtenerTurnoPorC
         this.obtenerTurnoPorClienteYVehiculoRepo=obtenerTurnoPorClienteYVehiculoRepo;
     }
 
-    public List<Turno> obtenerturnoPorClienteYVehiculo(Cliente cliente, Vehiculo vehiculo) {
+    public List<Turno> obtenerturnoPorClienteYVehiculo(String cliente, String vehiculo) {
         return (List<Turno>) obtenerTurnoPorClienteYVehiculoRepo.obtenerTurnoPorClienteyVehiculo(cliente,vehiculo);
     }
 }

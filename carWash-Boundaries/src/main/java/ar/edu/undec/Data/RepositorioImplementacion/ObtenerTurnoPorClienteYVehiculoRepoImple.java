@@ -1,13 +1,9 @@
 package ar.edu.undec.Data.RepositorioImplementacion;
 
-import ar.edu.undec.Data.EntityMapper.ClienteEntityMapper;
 import ar.edu.undec.Data.EntityMapper.TurnoEntityMapper;
-import ar.edu.undec.Data.ModeloEntity.ClienteEntity;
 import ar.edu.undec.Data.ModeloEntity.TurnoEntity;
 import ar.edu.undec.Data.RepositorioCRUD.IObtenerTurnoPorClienteYVehiculoCRUD;
-import modelo.Cliente;
 import modelo.Turno;
-import modelo.Vehiculo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import repositorio.IObtenerTurnoPorClienteYVehiculoRepo;
@@ -25,18 +21,14 @@ public class ObtenerTurnoPorClienteYVehiculoRepoImple implements IObtenerTurnoPo
 
 
     @Override
-    public Collection<Turno> obtenerTurnoPorClienteyVehiculo( Cliente cliente,Vehiculo vehiculo) {
-        ClienteEntity clienteEntity = new ClienteEntityMapper().mapeoCoreData(cliente);
-
+    public Collection<Turno> obtenerTurnoPorClienteyVehiculo(String documento, String matricula) {
         List<Turno> turnos= new ArrayList<>();
-        for (TurnoEntity elturno: obtenerTurnoPorClienteYVehiculoCRUD.findAll()){
-            if(elturno.getVehiculo().getCliente().equals(cliente)||elturno.getVehiculo().equals(vehiculo)) {
-                turnos.add(new TurnoEntityMapper().mapeoDataCore(elturno));
-            }
+        List<TurnoEntity> losTurnos = obtenerTurnoPorClienteYVehiculoCRUD.findTurnoEntityByVehiculo_MatriculaAndVehiculo_Cliente_Documento(matricula, documento);
+        for (TurnoEntity t: losTurnos) {
+            Turno turno = new TurnoEntityMapper().mapeoDataCore(t);
+            turnos.add(turno);
         }
         return turnos;
-
     }
-
 }
 

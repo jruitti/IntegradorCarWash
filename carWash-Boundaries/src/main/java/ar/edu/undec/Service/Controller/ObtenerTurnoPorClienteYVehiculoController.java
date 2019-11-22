@@ -30,12 +30,11 @@ public class ObtenerTurnoPorClienteYVehiculoController {
         this.obtenerTurnoPorClienteYVehiculoInput=obtenerTurnoPorClienteYVehiculoInput;
     }
 
-    @RequestMapping(value = "turno/cliente/vehiculo/{turno}",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "turno/documento/{dni}/matricula/{matricula}",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public ResponseEntity<?> obtenerTurnos(@RequestBody ClienteDTO elCliente,@RequestBody VehiculoDTO elVehiculo) {
+    public ResponseEntity<?> obtenerTurnos(@PathVariable("dni")String elCliente, @PathVariable("matricula") String elVehiculo) {
         try {
-
-            List<Turno> turno = this.obtenerTurnoPorClienteYVehiculoInput.obtenerturnoPorClienteYVehiculo(new ClienteDTOMapper().mapeoDTOCore(elCliente),new VehiculoDTOMapper().mapeoDTOCore(elVehiculo));
+            List<Turno> turno = this.obtenerTurnoPorClienteYVehiculoInput.obtenerturnoPorClienteYVehiculo(elCliente, elVehiculo);
             if (turno.isEmpty()) return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             return ResponseEntity.status(HttpStatus.OK).body(turno);
         } catch (Exception e) {

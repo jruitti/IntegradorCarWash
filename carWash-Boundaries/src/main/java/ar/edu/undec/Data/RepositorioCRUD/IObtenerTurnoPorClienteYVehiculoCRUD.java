@@ -13,6 +13,6 @@ import java.util.List;
 @Repository
 public interface IObtenerTurnoPorClienteYVehiculoCRUD  extends CrudRepository<TurnoEntity,Integer> {
 
-
+    List<TurnoEntity> findTurnoEntityByVehiculo_MatriculaAndVehiculo_Cliente_Documento(String matricula, String documento);
 }
 

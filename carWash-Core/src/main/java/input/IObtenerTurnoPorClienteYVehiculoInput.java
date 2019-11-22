@@ -8,5 +8,5 @@ import modelo.Vehiculo;
 import java.util.List;
 
 public interface IObtenerTurnoPorClienteYVehiculoInput {
-    List<Turno> obtenerturnoPorClienteYVehiculo(Cliente cliente, Vehiculo vehiculo);
+    List<Turno> obtenerturnoPorClienteYVehiculo(String documento, String matricula);
 }

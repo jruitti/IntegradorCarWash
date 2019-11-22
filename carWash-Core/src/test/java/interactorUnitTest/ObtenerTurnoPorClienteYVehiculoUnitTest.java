@@ -54,9 +54,9 @@ public class ObtenerTurnoPorClienteYVehiculoUnitTest {
     public void ObtenerTurnoPorClienteYVehiculo_ExistenTurnos_devuelveLista() throws TurnoIncompletoException, ClienteIncompletoException, VehiculoIncompletoException {
         Cliente clienteNuevo = Cliente.factoryCliente(1,"Pepe","Porahi 333", "Los guapos","32458305");
         Vehiculo vehiculoNuevo = Vehiculo.factoryVehiculo(1,"IXI056","Toyota","2019", clienteNuevo);
-        when(obtenerTurnoPorClienteYVehiculoRepo.obtenerTurnoPorClienteyVehiculo(clienteNuevo,vehiculoNuevo)).thenReturn(turnos);
+        when(obtenerTurnoPorClienteYVehiculoRepo.obtenerTurnoPorClienteyVehiculo(clienteNuevo.getDocumento(),vehiculoNuevo.getMatricula())).thenReturn(turnos);
         ObtenerturnoPorClienteYVehiculoUseCase obtenerturnoPorClienteYVehiculoUseCase = new   ObtenerturnoPorClienteYVehiculoUseCase(obtenerTurnoPorClienteYVehiculoRepo);
-        List<Turno> resultado= obtenerturnoPorClienteYVehiculoUseCase.obtenerturnoPorClienteYVehiculo(clienteNuevo,vehiculoNuevo);
+        List<Turno> resultado= obtenerturnoPorClienteYVehiculoUseCase.obtenerturnoPorClienteYVehiculo(clienteNuevo.getDocumento(),vehiculoNuevo.getMatricula());
         Assertions.assertEquals(2,resultado.size());
 
 

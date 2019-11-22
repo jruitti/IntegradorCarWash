@@ -41,7 +41,7 @@ public class ObtenerMontoIngresadoPorTunoEntreFechasIT {
         TurnoDTO turnoCuatros=new TurnoDTO(4, new VehiculoDTO(4,"POI123","Fiat","2018", lucas), LocalDate.of(2019, 11, 20), new EmpleadoDTO(1,"Pedro",234),200);
         when(obtenerMontoIngresadoPorTurnoEntreFechasInpu.montoObtenidoEntreFechas(LocalDate.of(2019, 11, 9),LocalDate.of(2019, 11, 20))).thenReturn(1.100);
         ObtenerMontoIngresadoPorTurnoEntreFechasController obtenerMontoIngresadoPorTurnoEntreFechasController=new ObtenerMontoIngresadoPorTurnoEntreFechasController(obtenerMontoIngresadoPorTurnoEntreFechasInpu);
-        assertEquals(obtenerMontoIngresadoPorTurnoEntreFechasController.obtenerMonto(LocalDate.of(2019,11,9),LocalDate.of(2019,11,20)).getStatusCodeValue(), HttpStatus.SC_OK);
+        assertEquals(obtenerMontoIngresadoPorTurnoEntreFechasController.obtenerMonto(LocalDate.of(2019,11,9).toString(),LocalDate.of(2019,11,20).toString()).getStatusCodeValue(), HttpStatus.SC_OK);
     }
 
     @Test
@@ -57,7 +57,7 @@ public class ObtenerMontoIngresadoPorTunoEntreFechasIT {
         TurnoDTO turnoCuatros=new TurnoDTO(4, new VehiculoDTO(4,"POI123","Fiat","2018", lucas), LocalDate.of(2019, 11, 20), new EmpleadoDTO(1,"Pedro",234),200);
         when(obtenerMontoIngresadoPorTurnoEntreFechasInpu.montoObtenidoEntreFechas(LocalDate.of(2019, 11, 9),LocalDate.of(2019, 11, 20))).thenReturn(-1.100);
         ObtenerMontoIngresadoPorTurnoEntreFechasController obtenerMontoIngresadoPorTurnoEntreFechasController=new ObtenerMontoIngresadoPorTurnoEntreFechasController(obtenerMontoIngresadoPorTurnoEntreFechasInpu);
-        assertEquals(obtenerMontoIngresadoPorTurnoEntreFechasController.obtenerMonto(LocalDate.of(2019,11,9),LocalDate.of(2019,11,20)).getStatusCodeValue(), HttpStatus.SC_NO_CONTENT);
+        assertEquals(obtenerMontoIngresadoPorTurnoEntreFechasController.obtenerMonto(LocalDate.of(2019,11,9).toString(),LocalDate.of(2019,11,20).toString()).getStatusCodeValue(), HttpStatus.SC_NO_CONTENT);
     }
 
 
