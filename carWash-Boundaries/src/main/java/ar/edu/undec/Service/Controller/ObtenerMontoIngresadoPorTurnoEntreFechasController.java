@@ -31,6 +31,13 @@ public class ObtenerMontoIngresadoPorTurnoEntreFechasController {
             LocalDate inicio = LocalDate.parse(fechaInicio, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
             LocalDate fin = LocalDate.parse(fechaFin, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
             Double monto=obtenerMontoIngresadoPorTurnoEntreFechasInpu.montoObtenidoEntreFechas(inicio, fin);
+
+           if(inicio.isBefore(fin)) {
+               return new ResponseEntity<>((HttpStatus.INTERNAL_SERVER_ERROR));
+           }
+           if (inicio==null||fin==null){
+               return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+           }
             if(monto<0){
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }else return ResponseEntity.status(HttpStatus.OK).body(monto);
