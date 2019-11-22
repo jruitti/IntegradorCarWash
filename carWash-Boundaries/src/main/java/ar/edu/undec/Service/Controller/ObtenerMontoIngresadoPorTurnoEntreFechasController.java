@@ -23,7 +23,7 @@ public class ObtenerMontoIngresadoPorTurnoEntreFechasController {
     public ObtenerMontoIngresadoPorTurnoEntreFechasController(IObtenerMontoIngresadoPorTurnoEntreFechasInpu obtenerMontoIngresadoPorTurnoEntreFechasInpu) {
         this.obtenerMontoIngresadoPorTurnoEntreFechasInpu=obtenerMontoIngresadoPorTurnoEntreFechasInpu;
     }
-    @RequestMapping(value = "precio/fechaInicio/{inicio}/fechaFin/{fin}/", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "turno/fechaInicio/{inicio}/fechaFin/{fin}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
 
     public ResponseEntity<?> obtenerMonto(@PathVariable("inicio") String fechaInicio, @PathVariable("fin") String fechaFin) {
@@ -33,7 +33,7 @@ public class ObtenerMontoIngresadoPorTurnoEntreFechasController {
             Double monto=obtenerMontoIngresadoPorTurnoEntreFechasInpu.montoObtenidoEntreFechas(inicio, fin);
             if(monto<0){
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-            }else return ResponseEntity.status(HttpStatus.OK).body(true);
+            }else return ResponseEntity.status(HttpStatus.OK).body(monto);
 
         } catch (FechaIncorrectaException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(false);
