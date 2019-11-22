@@ -2,6 +2,7 @@ package ar.edu.undec.Data.RepositorioImplementacion;
 
 import ar.edu.undec.Data.EntityMapper.TurnoEntityMapper;
 import ar.edu.undec.Data.ModeloEntity.TurnoEntity;
+import ar.edu.undec.Data.ModeloEntity.VehiculoEntity;
 import ar.edu.undec.Data.RepositorioCRUD.IBuscarTurnoPorVehiculoYFechaCRUD;
 import ar.edu.undec.Data.RepositorioCRUD.ICrearTurnoCRUD;
 import modelo.Turno;
@@ -25,8 +26,8 @@ public class CrearTurnoRepoImple implements IRepositorioCrearTurno {
     }
 
     @Override
-    public Turno findByVehiculoAndFecha(Vehiculo elVehiculo, LocalDate fecha) {
-        Turno elTurno = new TurnoEntityMapper().mapeoDataCore(buscarTurnoPorVehiculoYFechaCRUD.findByVehiculoAndFecha(elVehiculo, fecha));
+    public Turno findByVehiculoAndFecha(String matricula, LocalDate fecha) {
+        Turno elTurno = new TurnoEntityMapper().mapeoDataCore(buscarTurnoPorVehiculoYFechaCRUD.findByVehiculo_MatriculaAndFecha(matricula, fecha));
         if (elTurno != null) {
             return elTurno;
         }

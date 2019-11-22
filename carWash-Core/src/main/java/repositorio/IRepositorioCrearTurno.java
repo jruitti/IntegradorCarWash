@@ -6,5 +6,5 @@ import java.time.LocalDate;
 
 public interface IRepositorioCrearTurno {
     boolean guardar(Turno turnoNuevo);
-    Turno findByVehiculoAndFecha(Vehiculo elVehiculo, LocalDate fecha);
+    Turno findByVehiculoAndFecha(String matricula, LocalDate fecha);
 }

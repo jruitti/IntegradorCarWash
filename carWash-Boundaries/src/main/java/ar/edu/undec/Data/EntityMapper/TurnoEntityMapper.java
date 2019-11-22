@@ -23,16 +23,18 @@ public class TurnoEntityMapper {
     }
 
     public Turno mapeoDataCore(TurnoEntity elTurno){
-        try{
-            return Turno.factoryTurno(elTurno.getIdPedido(), Vehiculo.factoryVehiculo(elTurno.getVehiculo().getIdVehiculo(),
-                        elTurno.getVehiculo().getMatricula(),elTurno.getVehiculo().getMarca(), elTurno.getVehiculo().getModelo(),
-                        Cliente.factoryCliente(elTurno.getVehiculo().getCliente().getIdCliente(),elTurno.getVehiculo().getCliente().getNombre(),
+        try {
+            if (elTurno != null){
+                return Turno.factoryTurno(elTurno.getIdPedido(), Vehiculo.factoryVehiculo(elTurno.getVehiculo().getIdVehiculo(),
+                        elTurno.getVehiculo().getMatricula(), elTurno.getVehiculo().getMarca(), elTurno.getVehiculo().getModelo(),
+                        Cliente.factoryCliente(elTurno.getVehiculo().getCliente().getIdCliente(), elTurno.getVehiculo().getCliente().getNombre(),
                                 elTurno.getVehiculo().getCliente().getDomicilio(), elTurno.getVehiculo().getCliente().getBarrio(), elTurno.getVehiculo().getCliente().getDocumento())),
-                        elTurno.getFecha(), Empleado.factoryEmpleado(elTurno.getEncargado().getIdEmpleado(),elTurno.getEncargado().getNombre(),elTurno.getEncargado().getLegajo()), elTurno.getPrecio());
+                        elTurno.getFecha(), Empleado.factoryEmpleado(elTurno.getEncargado().getIdEmpleado(), elTurno.getEncargado().getNombre(), elTurno.getEncargado().getLegajo()), elTurno.getPrecio());
+            }
+            return null;
         }catch (TurnoIncompletoException | VehiculoIncompletoException | EmpleadoIncompletoException | ClienteIncompletoException e) {
             e.printStackTrace();
             return null;
         }
-
     }
 }
