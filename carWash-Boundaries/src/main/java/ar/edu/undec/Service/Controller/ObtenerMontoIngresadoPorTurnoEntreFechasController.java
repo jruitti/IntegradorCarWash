@@ -23,7 +23,7 @@ public class ObtenerMontoIngresadoPorTurnoEntreFechasController {
     public ObtenerMontoIngresadoPorTurnoEntreFechasController(IObtenerMontoIngresadoPorTurnoEntreFechasInpu obtenerMontoIngresadoPorTurnoEntreFechasInpu) {
         this.obtenerMontoIngresadoPorTurnoEntreFechasInpu=obtenerMontoIngresadoPorTurnoEntreFechasInpu;
     }
-    @RequestMapping(value = "fechaInicio/{inicio}/fechaFin/{fin}/", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "precio/fechaInicio/{inicio}/fechaFin/{fin}/", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
 
     public ResponseEntity<?> obtenerMonto(@PathVariable("inicio") String fechaInicio, @PathVariable("fin") String fechaFin) {

@@ -15,14 +15,12 @@ public class ObtenerMontoIngresadoPorTunoEntreFechasRepoImple  implements IObten
     IObtenerMontoIngresadoPorTurnoEntreFechasCRUD obtenerMontoIngresadoPorTurnoEntreFechasCRUD;
 
     public Double obtenerMonto(LocalDate fechaInicio, LocalDate fechaFin) {
-        List<TurnoEntity> turnos=(List<TurnoEntity>) obtenerMontoIngresadoPorTurnoEntreFechasCRUD.findAll();
-        Double total=0.0;
-        for (TurnoEntity turno:turnos){
-            if(fechaInicio.isBefore(fechaFin)){
-                total+=turno.getPrecio();
-            }
+        List<TurnoEntity> losTurnos = obtenerMontoIngresadoPorTurnoEntreFechasCRUD.findAllByFechaBetween(fechaInicio, fechaFin);
+        Double monto=0.0;
+        for (TurnoEntity t: losTurnos) {
+            monto+=t.getPrecio();
         }
-        return total;
+        return monto;
     }
 
 

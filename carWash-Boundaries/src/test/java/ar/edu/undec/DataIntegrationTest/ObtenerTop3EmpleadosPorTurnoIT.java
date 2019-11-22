@@ -27,7 +27,7 @@ public class ObtenerTop3EmpleadosPorTurnoIT {
     @Test
     @SqlGroup({
             @Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = "classpath:ObtenerTop3EmpleadosPorTurnoAntes.sql"),
-            @Sql(executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD, scripts = "classpath:ObtenerTop3EmpleadosPorTurnoDespues.sql")
+            //@Sql(executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD, scripts = "classpath:ObtenerTop3EmpleadosPorTurnoDespues.sql")
     })
     public void obtenerTop3EmpleadosPorTurno_devuelveListaBien() {
         List<Empleado> los3Empleados = obtenerTop3EmpleadosPorTurnoRepoImple.obtenerTop3EmpleadosPorTurno();

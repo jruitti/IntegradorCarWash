@@ -5,6 +5,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.jdbc.Sql;
+import org.springframework.test.context.jdbc.SqlGroup;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.LocalDate;
@@ -17,8 +19,13 @@ public class ObtnerMontoIngresadoPorTunoEntreFechasIT {
     @Autowired
     private ObtenerMontoIngresadoPorTunoEntreFechasRepoImple obtenerMontoIngresadoPorTunoEntreFechasRepoImple;
     @Test
+    @SqlGroup({
+            @Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = "classpath:ObtenerMontoIngresadoPorTurnoEntreFechasAntes.sql"),
+            //@Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = "classpath:ObtenerMontoIngresadoPorTurnoEntreFechasDespues.sql")
+    })
+
     public void obtenerMontoIngresadoPorTunoEntreFechas_Correctas_SeObtieneMonto(){
-        Double total=0.0;
-        assertEquals(total,obtenerMontoIngresadoPorTunoEntreFechasRepoImple.obtenerMonto(LocalDate.of(2019, 11, 9),LocalDate.of(2019, 11, 20)));
+        Double total = Double.valueOf(300);
+        assertEquals(total ,obtenerMontoIngresadoPorTunoEntreFechasRepoImple.obtenerMonto(LocalDate.of(2019, 11, 20),LocalDate.of(2019, 11, 22)));
     }
 }
